@@ -64,38 +64,22 @@
     pointer-events: none;
   }
 
-  h1 {
-    font-size: 3.2rem; font-weight: 700; line-height: 1.15;
-    color: var(--heading); letter-spacing: -0.03em; margin-bottom: 1rem;
-  }
-  h2 {
-    font-size: 2.4rem; font-weight: 700; line-height: 1.2;
-    color: var(--heading); letter-spacing: -0.02em; margin-bottom: 0.5rem;
-  }
-  h3 {
-    font-size: 1.15rem; font-weight: 400; color: var(--body);
-    line-height: 1.6; margin-bottom: 1.5rem; max-width: 700px;
-  }
+  h1 { font-size: 3.2rem; font-weight: 700; line-height: 1.15; color: var(--heading); letter-spacing: -0.03em; margin-bottom: 1rem; }
+  h2 { font-size: 2.4rem; font-weight: 700; line-height: 1.2; color: var(--heading); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  h3 { font-size: 1.15rem; font-weight: 400; color: var(--body); line-height: 1.6; margin-bottom: 1.5rem; max-width: 700px; }
   p { font-size: 1.15rem; line-height: 1.65; }
   strong { color: var(--heading); }
 
   .grad-text {
     background: linear-gradient(to right, var(--gold-500), var(--gold-400), var(--gold-300));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
   .slide.bg-dark .grad-text {
     background: linear-gradient(to right, var(--gold-400), var(--gold-300), var(--gold-500));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
 
-  .tag {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    padding: 0.3rem 0.9rem; border-radius: 999px;
-    font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.08em; margin-bottom: 1.25rem;
-  }
+  .tag { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
   .tag-gold { background: var(--gold-50); color: var(--gold-500); }
   .tag-amber { background: #FEF3C7; color: #B45309; }
   .tag-red { background: #FEF2F2; color: var(--red-500); }
@@ -105,170 +89,65 @@
   .tag-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
   ul { list-style: none; text-align: left; }
-  ul li {
-    padding: 0.45rem 0 0.45rem 1.6rem; position: relative;
-    font-size: 1.1rem; line-height: 1.6;
-  }
-  ul li::before {
-    content: ''; position: absolute; left: 0; top: 0.85rem;
-    width: 7px; height: 7px; border-radius: 50%; background: var(--gold-500);
-  }
+  ul li { padding: 0.45rem 0 0.45rem 1.6rem; position: relative; font-size: 1.1rem; line-height: 1.6; }
+  ul li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 7px; height: 7px; border-radius: 50%; background: var(--gold-500); }
 
-  /* Bio cards */
-  .bio-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
-    max-width: 960px; margin-top: 0.5rem;
-  }
-  .bio-card {
-    background: var(--bg); border: 1px solid var(--slate-200);
-    border-radius: 24px; padding: 2rem 2rem; text-align: left;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  .bio-header {
-    display: flex; align-items: center; gap: 1.25rem; margin-bottom: 0.25rem;
-  }
-  .bio-photo {
-    width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
-    border: 3px solid var(--slate-200); flex-shrink: 0;
-  }
+  .bio-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 960px; margin-top: 0.5rem; }
+  .bio-card { background: var(--bg); border: 1px solid var(--slate-200); border-radius: 24px; padding: 2rem; text-align: left; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .bio-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 0.25rem; }
+  .bio-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--slate-200); flex-shrink: 0; }
   .bio-card h2 { font-size: 1.5rem; margin-bottom: 0.15rem; }
-  .bio-card .role {
-    color: var(--gold-500); font-size: 0.95rem; margin-bottom: 0.25rem;
-  }
-  .bio-card .sub-role {
-    color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;
-  }
+  .bio-card .role { color: var(--gold-500); font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .bio-card .sub-role { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; }
   .bio-card ul li { font-size: 0.9rem; padding: 0.25rem 0 0.25rem 1.4rem; }
   .bio-card ul li::before { top: 0.6rem; width: 5px; height: 5px; }
 
-  .stat-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-    max-width: 920px; margin-top: 1.5rem;
-  }
-  .stat-box {
-    background: var(--bg); border: 1px solid var(--slate-200);
-    border-radius: var(--radius); padding: 1.75rem 1.5rem; text-align: left;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  .stat-box .num {
-    font-size: 2.8rem; font-weight: 700; color: var(--gold-500);
-    letter-spacing: -0.03em;
-  }
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 920px; margin-top: 1.5rem; }
+  .stat-box { background: var(--bg); border: 1px solid var(--slate-200); border-radius: var(--radius); padding: 1.75rem 1.5rem; text-align: left; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .stat-box .num { font-size: 2.8rem; font-weight: 700; color: var(--gold-500); letter-spacing: -0.03em; }
   .stat-box .desc { font-size: 0.92rem; color: var(--body); margin-top: 0.4rem; line-height: 1.5; }
   .stat-box .source { font-size: 0.72rem; color: var(--muted); margin-top: 0.6rem; }
-  .slide.bg-dark .stat-box {
-    background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);
-  }
+  .slide.bg-dark .stat-box { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
   .slide.bg-dark .stat-box .desc { color: rgba(255,255,255,0.7); }
-  .slide.bg-dark .stat-box .source { color: rgba(255,255,255,0.4); }
 
-  .two-col {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
-    max-width: 920px; text-align: left;
-  }
-  .col-card {
-    background: var(--bg); border: 1px solid var(--slate-200);
-    border-radius: var(--radius); padding: 1.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  .col-card h3 {
-    font-size: 1.05rem; font-weight: 700; color: var(--heading);
-    margin-bottom: 0.75rem; max-width: none;
-  }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 920px; text-align: left; }
+  .col-card { background: var(--bg); border: 1px solid var(--slate-200); border-radius: var(--radius); padding: 1.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .col-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--heading); margin-bottom: 0.75rem; max-width: none; }
   .col-card ul li { font-size: 0.95rem; padding: 0.25rem 0 0.25rem 1.4rem; }
   .col-card ul li::before { top: 0.6rem; width: 5px; height: 5px; }
-  .slide.bg-dark .col-card {
-    background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);
-  }
+  .slide.bg-dark .col-card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
   .slide.bg-dark .col-card h3 { color: #fff; }
 
-  .compare-table {
-    max-width: 880px; width: 100%; border-collapse: separate;
-    border-spacing: 0; margin-top: 1.5rem; border-radius: var(--radius);
-    overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  .compare-table th {
-    background: var(--navy-900); color: #fff; padding: 0.85rem 1.25rem;
-    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em;
-    text-align: left; font-weight: 700;
-  }
-  .compare-table td {
-    padding: 0.75rem 1.25rem; font-size: 0.95rem; border-bottom: 1px solid var(--slate-100);
-    text-align: left; vertical-align: top;
-  }
+  .compare-table { max-width: 880px; width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 1.5rem; border-radius: var(--radius); overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .compare-table th { background: var(--navy-900); color: #fff; padding: 0.85rem 1.25rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; text-align: left; font-weight: 700; }
+  .compare-table td { padding: 0.75rem 1.25rem; font-size: 0.95rem; border-bottom: 1px solid var(--slate-100); text-align: left; vertical-align: top; }
   .compare-table tr:last-child td { border-bottom: none; }
   .compare-table .arrow-col { text-align: center; color: var(--gold-500); font-size: 1.3rem; }
   .compare-table .highlight-row { background: var(--gold-50); }
 
-  .agent-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
-    max-width: 960px; margin-top: 1rem;
-  }
-  .agent-card {
-    background: var(--bg); border: 1px solid var(--slate-200);
-    border-radius: var(--radius); padding: 1.75rem 1.5rem; text-align: left;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    position: relative; overflow: hidden;
-  }
-  .agent-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0;
-    height: 3px; background: linear-gradient(to right, var(--gold-500), var(--gold-400));
-  }
-  .agent-card .agent-label {
-    font-size: 0.7rem; font-weight: 700; color: var(--gold-500);
-    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem;
-  }
-  .agent-card h3 {
-    font-size: 1.1rem; font-weight: 700; color: var(--heading);
-    margin-bottom: 0.5rem; max-width: none;
-  }
+  .agent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 960px; margin-top: 1rem; }
+  .agent-card { background: var(--bg); border: 1px solid var(--slate-200); border-radius: var(--radius); padding: 1.75rem 1.5rem; text-align: left; box-shadow: 0 1px 3px rgba(0,0,0,0.04); position: relative; overflow: hidden; }
+  .agent-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--gold-500), var(--gold-400)); }
+  .agent-card .agent-label { font-size: 0.7rem; font-weight: 700; color: var(--gold-500); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .agent-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: 0.5rem; max-width: none; }
   .agent-card p { font-size: 0.9rem; line-height: 1.55; }
-  .slide.bg-dark .agent-card {
-    background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);
-  }
+  .slide.bg-dark .agent-card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
   .slide.bg-dark .agent-card h3 { color: #fff; }
-  .slide.bg-dark .agent-card::before {
-    background: linear-gradient(to right, var(--gold-400), var(--gold-300));
-  }
+  .slide.bg-dark .agent-card::before { background: linear-gradient(to right, var(--gold-400), var(--gold-300)); }
 
-  .resp-table {
-    max-width: 920px; width: 100%; border-collapse: separate;
-    border-spacing: 0; margin-top: 1.25rem; border-radius: var(--radius);
-    overflow: hidden; font-size: 0.88rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  .resp-table th {
-    background: var(--navy-900); color: #fff; padding: 0.7rem 1rem;
-    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
-    text-align: left; font-weight: 700;
-  }
-  .resp-table td {
-    padding: 0.6rem 1rem; border-bottom: 1px solid var(--slate-100);
-    text-align: left; vertical-align: middle;
-  }
+  .resp-table { max-width: 920px; width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 1.25rem; border-radius: var(--radius); overflow: hidden; font-size: 0.88rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .resp-table th { background: var(--navy-900); color: #fff; padding: 0.7rem 1rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; text-align: left; font-weight: 700; }
+  .resp-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--slate-100); text-align: left; vertical-align: middle; }
   .resp-table tr:last-child td { border-bottom: none; }
-  .badge {
-    display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px;
-    font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: 0.04em;
-  }
+  .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
   .badge-auto { background: var(--green-600); color: #fff; }
   .badge-assist { background: var(--blue-500); color: #fff; }
   .badge-human { background: var(--red-500); color: #fff; }
 
-  .flow {
-    display: flex; align-items: center; gap: 0.5rem;
-    max-width: 880px; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center;
-  }
-  .flow-box {
-    background: var(--bg); border: 1px solid var(--slate-200);
-    border-radius: 12px; padding: 1rem 1.25rem; text-align: center;
-    min-width: 140px;
-  }
-  .flow-box.primary {
-    background: var(--navy-900); color: #fff; border-color: var(--navy-900);
-  }
-  .flow-box.gold {
-    background: var(--gold-50); border-color: var(--gold-500);
-  }
+  .flow { display: flex; align-items: center; gap: 0.5rem; max-width: 880px; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center; }
+  .flow-box { background: var(--bg); border: 1px solid var(--slate-200); border-radius: 12px; padding: 1rem 1.25rem; text-align: center; min-width: 130px; }
+  .flow-box.primary { background: var(--navy-900); color: #fff; border-color: var(--navy-900); }
+  .flow-box.gold { background: var(--gold-50); border-color: var(--gold-500); }
   .flow-box .flow-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.25rem; }
   .flow-box .flow-label-light { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem; }
   .flow-box .flow-title { font-size: 0.95rem; font-weight: 700; }
@@ -276,62 +155,24 @@
   .slide.bg-dark .flow-box { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: #fff; }
   .slide.bg-dark .flow-box.gold { background: rgba(201,168,76,0.15); border-color: var(--gold-500); }
 
-  .code-block {
-    background: var(--navy-900); color: #E2E8F0; border-radius: 12px;
-    padding: 1.5rem 2rem; text-align: left; font-family: 'SF Mono', 'Fira Code', monospace;
-    font-size: 0.85rem; line-height: 1.7; max-width: 780px; width: 100%;
-    margin-top: 1rem; overflow-x: auto;
-  }
+  .code-block { background: var(--navy-900); color: #E2E8F0; border-radius: 12px; padding: 1.5rem 2rem; text-align: left; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.7; max-width: 780px; width: 100%; margin-top: 1rem; overflow-x: auto; }
   .code-block .comment { color: #64748B; }
   .code-block .keyword { color: var(--gold-400); }
   .code-block .string { color: #86EFAC; }
 
-  .roadmap {
-    max-width: 880px; width: 100%; margin-top: 1.5rem;
-  }
-  .roadmap-item {
-    display: grid; grid-template-columns: 100px 3px 1fr; gap: 1.25rem;
-    align-items: start;
-  }
-  .roadmap-time {
-    text-align: right; font-size: 0.82rem; font-weight: 700;
-    color: var(--gold-500); padding-top: 0.9rem;
-  }
-  .roadmap-line {
-    background: var(--slate-200); position: relative;
-  }
-  .roadmap-line::before {
-    content: ''; position: absolute; top: 1rem; left: -4px;
-    width: 11px; height: 11px; border-radius: 50%;
-    background: var(--gold-500); border: 2px solid var(--bg);
-  }
-  .roadmap-content {
-    background: var(--bg); border: 1px solid var(--slate-200);
-    border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.75rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  }
-  .roadmap-content h4 {
-    font-size: 0.95rem; font-weight: 700; color: var(--heading); margin-bottom: 0.25rem;
-  }
+  .roadmap { max-width: 880px; width: 100%; margin-top: 1.5rem; }
+  .roadmap-item { display: grid; grid-template-columns: 100px 3px 1fr; gap: 1.25rem; align-items: start; }
+  .roadmap-time { text-align: right; font-size: 0.82rem; font-weight: 700; color: var(--gold-500); padding-top: 0.9rem; }
+  .roadmap-line { background: var(--slate-200); position: relative; }
+  .roadmap-line::before { content: ''; position: absolute; top: 1rem; left: -4px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold-500); border: 2px solid var(--bg); }
+  .roadmap-content { background: var(--bg); border: 1px solid var(--slate-200); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .roadmap-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--heading); margin-bottom: 0.25rem; }
   .roadmap-content p { font-size: 0.85rem; line-height: 1.5; }
 
-  .progress {
-    position: fixed; top: 0; left: 0; height: 3px;
-    background: linear-gradient(to right, var(--gold-500), var(--gold-400));
-    transition: width 0.3s ease; z-index: 100;
-  }
+  .progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(to right, var(--gold-500), var(--gold-400)); transition: width 0.3s ease; z-index: 100; }
 
-  .nav {
-    position: fixed; bottom: 1.5rem; right: 1.5rem;
-    display: flex; align-items: center; gap: 0.6rem; z-index: 100;
-  }
-  .nav button {
-    width: 38px; height: 38px; border-radius: 8px;
-    border: 1px solid var(--slate-200); background: var(--bg);
-    color: var(--slate-700); font-size: 0.95rem; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  }
+  .nav { position: fixed; bottom: 1.5rem; right: 1.5rem; display: flex; align-items: center; gap: 0.6rem; z-index: 100; }
+  .nav button { width: 38px; height: 38px; border-radius: 8px; border: 1px solid var(--slate-200); background: var(--bg); color: var(--slate-700); font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
   .nav button:hover { background: var(--gold-500); color: #fff; border-color: var(--gold-500); }
   .nav button:disabled { opacity: 0.25; cursor: not-allowed; }
   .nav .counter { font-size: 0.78rem; color: var(--muted); font-weight: 700; }
@@ -342,13 +183,9 @@
     h2 { font-size: 1.6rem; }
     .stat-grid, .two-col, .agent-grid, .bio-row { grid-template-columns: 1fr; }
   }
-
   @media print {
     body { overflow: visible; height: auto; }
-    .slide {
-      position: relative !important; display: flex !important;
-      page-break-after: always; height: auto; min-height: 100vh;
-    }
+    .slide { position: relative !important; display: flex !important; page-break-after: always; height: auto; min-height: 100vh; }
     .nav, .progress { display: none !important; }
   }
 </style>
@@ -362,14 +199,14 @@
   <div class="slide bg-dark active">
     <span class="tag tag-gold"><span class="tag-dot"></span> GBL AI Workshop</span>
     <h1><span class="grad-text">AI Agents at GBL</span></h1>
-    <h3 style="color:rgba(255,255,255,0.7);">Building autonomous analysis machines from GBL's proprietary process, live, from scratch</h3>
+    <h3 style="color:rgba(255,255,255,0.7);">Building investment-grade AI agents from scratch, live</h3>
     <p style="color:rgba(255,255,255,0.4); font-size:0.95rem; margin-top:1.5rem;">
       Cameron Weibel &amp; Spencer Johnson<br>
-      March 2026
+      Live coding + agent demo &middot; 90 minutes
     </p>
   </div>
 
-  <!-- ====== 2. MEET THE PRESENTERS ====== -->
+  <!-- ====== 2. PRESENTERS ====== -->
   <div class="slide bg-alt">
     <span class="tag tag-gold"><span class="tag-dot"></span> Meet Your Presenters</span>
     <div class="bio-row">
@@ -408,7 +245,7 @@
     </div>
   </div>
 
-  <!-- ====== 3. THE THREE-LAYER STACK ====== -->
+  <!-- ====== 3. THREE-LAYER STACK ====== -->
   <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Core Concept</span>
     <h2 style="color:#fff;">The Three-Layer Stack</h2>
@@ -417,7 +254,7 @@
       <div class="flow-box primary">
         <div class="flow-label-light">Layer 1</div>
         <div class="flow-title">LLM Brain</div>
-        <p style="font-size:0.8rem; margin-top:0.3rem;">Claude / GPT</p>
+        <p style="font-size:0.8rem; margin-top:0.3rem;">Claude</p>
       </div>
       <span class="flow-arrow">&rarr;</span>
       <div class="flow-box">
@@ -433,85 +270,124 @@
       </div>
     </div>
     <p style="margin-top:2rem; max-width:700px; font-size:1rem; color:rgba(255,255,255,0.6);">
-      Without your proprietary process, these are generic tools anyone can build. With GBL's investment criteria, sector theses, and portfolio context, they become hyper-curated machines no competitor can replicate.
+      GBL is sitting on a goldmine of enterprise data. Without your proprietary process, these are generic tools. With GBL's investment criteria, sector theses, and portfolio context, they become hyper-curated machines no competitor can replicate.
     </p>
   </div>
 
-  <!-- ====== 4. OVERVIEW: THREE DEMOS ====== -->
+  <!-- ====== 4. TRADITIONAL vs AGENT ====== -->
   <div class="slide">
+    <span class="tag tag-amber"><span class="tag-dot"></span> The Time Arbitrage</span>
+    <h2>Traditional vs. Agent-Augmented Research</h2>
+    <table class="compare-table">
+      <tr>
+        <th style="width:38%;">Traditional</th>
+        <th style="width:5%;"></th>
+        <th style="width:38%;">Agent-Augmented</th>
+        <th style="width:19%;">Savings</th>
+      </tr>
+      <tr>
+        <td>Analyst reads 8 earnings call PDFs, takes notes, writes summary</td>
+        <td class="arrow-col">&rarr;</td>
+        <td>Agent fetches all 8 transcripts, extracts sentiment + capital allocation signals, surfaces anomalies</td>
+        <td><strong>3-4 hrs &rarr; 90s</strong></td>
+      </tr>
+      <tr>
+        <td>Analyst checks CapIQ daily for insider trades on watchlist</td>
+        <td class="arrow-col">&rarr;</td>
+        <td>Monitoring agent checks every 15 min, Slacks the team only when threshold is crossed</td>
+        <td><strong>30 min/day &rarr; 0</strong></td>
+      </tr>
+      <tr class="highlight-row">
+        <td>Partner reads 60-page CIM, extracts criteria fit</td>
+        <td class="arrow-col">&rarr;</td>
+        <td>Screening agent reads CIM, scores fit against GBL criteria, flags risks, outputs 1-page summary</td>
+        <td><strong>4-6 hrs &rarr; 4 min</strong></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ====== 5. OVERVIEW: THREE DEMOS ====== -->
+  <div class="slide bg-alt">
     <span class="tag tag-gold"><span class="tag-dot"></span> Session Overview</span>
-    <h2>Three Demos, Built Live</h2>
-    <h3>Each maps to a real GBL workflow. We build them from scratch, then show how they become scheduled agents.</h3>
+    <h2>Three Agents, Built Live</h2>
+    <h3>We build Demos 1 and 2 from scratch. Demo 3 we show the architecture then run it live.</h3>
     <div class="agent-grid">
       <div class="agent-card">
-        <div class="agent-label">Demo 1 &middot; Private Data</div>
-        <h3>Transcript Analysis</h3>
-        <p>Fetch earnings call transcripts (NVDA Y2024 Q1), run a qualitative screen against GBL criteria, output to Google Sheets. Voice-driven via Wispr Flow.</p>
-        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--muted);">Management quality, capital allocation, thesis alignment</p>
+        <div class="agent-label">Demo 1 &middot; 28 min</div>
+        <h3>Transcript Analyser</h3>
+        <p>SGS Group (GBL's largest listed holding, 14.3% stake). Fetch earnings call transcripts, run a qualitative screen against GBL criteria, detect anomalies across quarters.</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--muted);">Connect Claude Code to API via Wispr Flow. GSheet as database.</p>
       </div>
       <div class="agent-card">
-        <div class="agent-label">Demo 2 &middot; Public Data</div>
-        <h3>Sector DD &amp; Financial DD</h3>
-        <p>5-year projections from historical and listed growth initiatives. 3-year trend flat or declining? Do we believe the equity story? Red flag analysis on financials.</p>
-        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--muted);">Enterprise value growth, EBITDA, advisor report challenge</p>
+        <div class="agent-label">Demo 2 &middot; 25 min</div>
+        <h3>CIM Deal Screener</h3>
+        <p>NovaDiag GmbH (fictional ophthalmology diagnostics SaaS, &euro;42M ARR). Four specialist agents running in parallel: intake, GBL scoring, financial sanity, risk extraction.</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--muted);">60-page CIM becomes a 1-page investment verdict in 4 minutes.</p>
       </div>
       <div class="agent-card">
-        <div class="agent-label">Demo 3 &middot; Dual Sources</div>
-        <h3>Alt Data &amp; Portfolio Monitoring</h3>
-        <p>Pull fringe data: podcast appearances, news, SignalScribe. Detect if the investment thesis could change. Proactive portfolio management.</p>
-        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--muted);">Thesis drift detection, regular cadence</p>
+        <div class="agent-label">Demo 3 &middot; 15 min</div>
+        <h3>Portfolio Watchdog</h3>
+        <p>Always-on agent monitoring all GBL listed holdings: SGS, Adidas, Pernod Ricard, Imerys, Concentrix. Alerts to Slack when thresholds are crossed.</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--muted);">Plus alt data: podcast appearances, SignalScribe, thesis drift.</p>
       </div>
     </div>
   </div>
 
-  <!-- ====== 5. DEMO 1: TRANSCRIPT ANALYSIS ====== -->
+  <!-- ====== 6. DEMO 1: TRANSCRIPT ANALYSER ====== -->
   <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Hands On</span>
-    <h2 style="color:#fff;">Earnings Transcript Analysis</h2>
-    <h3 style="color:rgba(255,255,255,0.65);">Connect Claude Code to the API using Wispr Flow. Fetch NVDA Y2024 Q1. Run a qualitative screen. Output to Google Sheets.</h3>
+    <h2 style="color:#fff;">Historical Transcript Analysis Agent</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">SGS Group. Connect Claude Code to the API via Wispr Flow. Build the agent live.</h3>
     <div class="flow" style="margin-bottom:1.5rem;">
       <div class="flow-box primary">
-        <div class="flow-label-light">Step 1</div>
-        <div class="flow-title">Claude Code + API</div>
-        <p style="font-size:0.8rem; margin-top:0.25rem;">Voice via Wispr Flow</p>
+        <div class="flow-label-light">Fetcher</div>
+        <div class="flow-title">Get Transcript</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">requests + BeautifulSoup</p>
       </div>
       <span class="flow-arrow">&rarr;</span>
       <div class="flow-box">
-        <div class="flow-label">Step 2</div>
-        <div class="flow-title">Fetch Transcript</div>
-        <p style="font-size:0.8rem; margin-top:0.25rem;">NVDA Y2024 Q1</p>
-      </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box">
-        <div class="flow-label">Step 3</div>
+        <div class="flow-label">Analyser</div>
         <div class="flow-title">Qualitative Screen</div>
-        <p style="font-size:0.8rem; margin-top:0.25rem;">GBL criteria</p>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">Claude API + GBL prompts</p>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">
+        <div class="flow-label">Loop</div>
+        <div class="flow-title">Multi-Quarter</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">Q1-Q3 2024</p>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">
+        <div class="flow-label">Detect</div>
+        <div class="flow-title">Anomalies</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">Cross-quarter shifts</p>
       </div>
       <span class="flow-arrow">&rarr;</span>
       <div class="flow-box gold">
         <div class="flow-label">Output</div>
-        <div class="flow-title" style="color:var(--gold-500);">Google Sheets</div>
-        <p style="font-size:0.8rem; margin-top:0.25rem;">The database</p>
+        <div class="flow-title" style="color:var(--gold-500);">Briefing</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">JSON + GSheet</p>
       </div>
     </div>
     <div style="text-align:left; max-width:700px;">
       <ul>
-        <li>Management quality signals</li>
-        <li>Capital allocation patterns</li>
-        <li>Alignment with investment thesis</li>
-        <li>Value chain changes</li>
-        <li>Current and end market growth</li>
+        <li>Management confidence score 1-10</li>
+        <li>Capital allocation signals (M&amp;A stance, capex, buybacks)</li>
+        <li>Notable language shifts vs. prior quarters</li>
+        <li>Guidance credibility: HIGH / MEDIUM / LOW</li>
+        <li>Top 3 risks mentioned</li>
+        <li>GBL thesis alignment score</li>
       </ul>
     </div>
   </div>
 
-  <!-- ====== 6. DEMO 1: SHARED PROMPTS ====== -->
+  <!-- ====== 7. DEMO 1: EXTENDING WITH SHARED PROMPTS ====== -->
   <div class="slide">
     <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Extending</span>
     <h2>Management Defines the Prompts</h2>
     <h3>Qualitative screen criteria live in a shared GDrive document. Anyone on the team adds prompts of interest. The agent reads them on every run.</h3>
     <div class="code-block">
-      <span class="comment"># Shared GDrive Document: GBL Qualitative Screen Prompts</span><br><br>
+      <span class="comment"># Shared GDrive Doc: GBL Qualitative Screen Prompts</span><br><br>
       <span class="keyword">prompt_1:</span> <span class="string">"Value chain changes in the last quarter"</span><br>
       <span class="keyword">prompt_2:</span> <span class="string">"Current and end market growth trajectory"</span><br>
       <span class="keyword">prompt_3:</span> <span class="string">"Management tone on capital allocation"</span><br>
@@ -521,47 +397,127 @@
       <span class="comment"># The agent picks them up on the next scheduled run.</span>
     </div>
     <p style="margin-top:1.25rem; max-width:700px; font-size:1rem;">
-      New transcript drops? The qualitative screen runs automatically. This is the curation layer. The LLM is commodity. These prompts, shaped by decades of investment judgment, are the proprietary edge.
+      New transcript drops? The qualitative screen runs automatically. This is the curation layer. The LLM is commodity. These prompts, shaped by decades of GBL judgment, are the proprietary edge.
     </p>
   </div>
 
-  <!-- ====== 7. DEMO 2: SECTOR DD & FINANCIAL DD ====== -->
+  <!-- ====== 8. DEMO 2: CIM SCREENER ====== -->
   <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Demo 2: Hands On</span>
-    <h2 style="color:#fff;">Sector DD, Financial DD, Red Flags</h2>
-    <h3 style="color:rgba(255,255,255,0.65);">5-year projections from historical and listed growth initiatives. Do we believe the equity story?</h3>
+    <h2 style="color:#fff;">CIM Deal Screening Multi-Agent System</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">NovaDiag GmbH: ophthalmology diagnostics SaaS, &euro;42M ARR, 85% gross margin. Four agents, four specialist prompts, running in parallel.</h3>
+    <div class="agent-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="agent-card">
+        <div class="agent-label">Intake</div>
+        <h3>CIM Parser</h3>
+        <p>Extracts company profile, financials, structured fields from raw CIM text</p>
+      </div>
+      <div class="agent-card">
+        <div class="agent-label">Scoring</div>
+        <h3>GBL Criteria</h3>
+        <p>Scores each of GBL's 5 criteria 1-10 with rationale. Flag if any &lt; 6</p>
+      </div>
+      <div class="agent-card">
+        <div class="agent-label">Validation</div>
+        <h3>Financial Sanity</h3>
+        <p>Validates margins, benchmarks valuation against PE comps. Flag if &gt; 2x median</p>
+      </div>
+      <div class="agent-card">
+        <div class="agent-label">Risk</div>
+        <h3>Risk Extraction</h3>
+        <p>Categorises risk factors: concentration (38% top 3), key-person (founder-CTO, 100% IP)</p>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; max-width:750px; font-size:0.95rem; color:rgba(255,255,255,0.55);">
+      GBL hires advisors, then challenges their reports. This agent generates the additional questions automatically. LOI has indicative range, so this accelerates both pre-FDD and post-FDD passes.
+    </p>
+  </div>
+
+  <!-- ====== 9. DEMO 2: EQUITY STORY ====== -->
+  <div class="slide">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 2: Deep Dive</span>
+    <h2>Do We Believe the Equity Story?</h2>
+    <h3>5-year projections based on historical and listed growth initiatives. The agent surfaces the right questions before the fireside chat.</h3>
     <div class="agent-grid">
       <div class="agent-card">
         <div class="agent-label">Financial DD</div>
-        <h3>Growth Trajectory Analysis</h3>
+        <h3>Growth Trajectory</h3>
         <p>3-year period trend: flat or declining? Compare enterprise value growth vs EBITDA growth. If you buy a company, do you get higher value?</p>
       </div>
       <div class="agent-card">
         <div class="agent-label">Sector DD</div>
         <h3>Equity Story Validation</h3>
-        <p>Challenge growth initiatives against sector comps. Fireside chat prep with company teams. Surface questions before LOI.</p>
+        <p>Challenge growth initiatives against sector comps. Prep questions for fireside chats with company teams.</p>
       </div>
       <div class="agent-card">
         <div class="agent-label">Red Flags</div>
         <h3>Advisor Report Challenge</h3>
-        <p>GBL hires advisors, then challenges their reports. This agent generates the additional questions automatically, before and after FDD.</p>
+        <p>GBL's job is to challenge the advisor's reports. This agent generates the additional questions automatically.</p>
       </div>
     </div>
-    <p style="margin-top:1.5rem; max-width:750px; font-size:0.95rem; color:rgba(255,255,255,0.5);">
-      LOI has indicative range, so FDD happens beforehand and again afterwards. This agent accelerates both passes.
-    </p>
   </div>
 
-  <!-- ====== 8. DEMO 3: ALT DATA ====== -->
-  <div class="slide bg-alt">
+  <!-- ====== 10. DEMO 3: PORTFOLIO WATCHDOG ====== -->
+  <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Demo 3: Hands On</span>
-    <h2>Alternative Data &amp; Portfolio Monitoring</h2>
-    <h3>Pull fringe data sources on a regular basis. Detect if the investment thesis could change before it shows up in financials.</h3>
+    <h2 style="color:#fff;">Portfolio Watchdog Agent</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">The always-on agent. Runs without being asked. Monitors all GBL listed holdings and alerts to Slack.</h3>
+    <table class="compare-table" style="font-size:0.88rem;">
+      <tr>
+        <th>Company</th>
+        <th>Ticker</th>
+        <th>GBL Stake</th>
+        <th>Watch Triggers</th>
+        <th>Alert Threshold</th>
+      </tr>
+      <tr>
+        <td><strong>SGS Group</strong></td>
+        <td>SGSN.SW</td>
+        <td>14.3% / &euro;2.7B</td>
+        <td>Earnings, insider trades, M&amp;A, analyst changes</td>
+        <td>Move &gt;2% or news flagged</td>
+      </tr>
+      <tr>
+        <td><strong>Adidas</strong></td>
+        <td>ADS.DE</td>
+        <td>3.5% / &euro;1.1B</td>
+        <td>Earnings, CEO statements, brand news</td>
+        <td>Move &gt;3% or earnings beat/miss</td>
+      </tr>
+      <tr>
+        <td><strong>Pernod Ricard</strong></td>
+        <td>RI.PA</td>
+        <td>6.8% / &euro;1.3B</td>
+        <td>Earnings, China volumes, tariff news</td>
+        <td>Move &gt;2% or China/tariff flag</td>
+      </tr>
+      <tr>
+        <td><strong>Imerys</strong></td>
+        <td>NK.PA</td>
+        <td>54.7% / &euro;1.1B</td>
+        <td>Earnings, ESG litigation, mining regulation</td>
+        <td>Any news (controlling stake)</td>
+      </tr>
+      <tr>
+        <td><strong>Concentrix</strong></td>
+        <td>CNXC</td>
+        <td>14.1% / &euro;314M</td>
+        <td>AI disruption news, client churn, earnings</td>
+        <td>Move &gt;5% or AI/BPO sector news</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ====== 11. DEMO 3: ALT DATA ====== -->
+  <div class="slide bg-alt">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 3: Alt Data Sources</span>
+    <h2>Fringe Data for Portfolio Intelligence</h2>
+    <h3>Pull signals competitors miss. Detect thesis drift before it shows up in financials. Ask it to use particular sources.</h3>
     <div class="agent-grid">
       <div class="agent-card">
         <div class="agent-label">Alt Data</div>
         <h3>Podcast &amp; Media Monitor</h3>
-        <p>Track CEO/CFO podcast appearances, conference talks, media interviews. Surface tone shifts and strategic hints. Ask it to use particular sources.</p>
+        <p>Track CEO/CFO podcast appearances, conference talks, media interviews. Surface tone shifts and strategic hints on a regular basis.</p>
       </div>
       <div class="agent-card">
         <div class="agent-label">News Intelligence</div>
@@ -571,12 +527,12 @@
       <div class="agent-card">
         <div class="agent-label">Thesis Validation</div>
         <h3>Investment Thesis Drift</h3>
-        <p>If your thesis changes, or you change your investment thesis, re-run discovery against the portfolio. Proactive management, not reactive.</p>
+        <p>If your thesis changes, re-run discovery against the portfolio. Proactive portfolio management, not reactive.</p>
       </div>
     </div>
   </div>
 
-  <!-- ====== 9. FROM SKILLS TO AGENTS ====== -->
+  <!-- ====== 12. FROM SKILLS TO AGENTS ====== -->
   <div class="slide">
     <span class="tag tag-gold"><span class="tag-dot"></span> Packaging</span>
     <h2>From One-Shot to Scheduled Agent</h2>
@@ -608,30 +564,35 @@
       <ul>
         <li><strong>/ai-digester</strong> personalised per partner: different frequency, different depth, different holdings focus</li>
         <li><strong>/communicator</strong> sends aggregated and summarised output at the cadence each person wants</li>
-        <li>Agents tiered by staff level: what is relevant for an analyst differs from what a partner needs</li>
+        <li>Agents tiered by staff level: what's relevant for an analyst differs from what a partner needs</li>
       </ul>
     </div>
   </div>
 
-  <!-- ====== 10. YOUR DATA IS THE MOAT ====== -->
-  <div class="slide bg-dark">
-    <span class="tag tag-gold"><span class="tag-dot"></span> The Opportunity</span>
-    <h1 style="font-size:2.6rem; max-width:800px; color:#fff;">
-      GBL is sitting on a <span class="grad-text">goldmine</span> of enterprise data
-    </h1>
-    <p style="max-width:650px; margin-top:1.5rem; font-size:1.15rem; color:rgba(255,255,255,0.8);">
-      Decades of IC memos, due diligence reports, board materials, deal evaluations, and proprietary sector theses. Every document becomes fuel for agents no competitor can replicate.
-    </p>
-    <p style="max-width:650px; margin-top:1rem; font-size:1rem; color:rgba(255,255,255,0.5);">
-      Using your historical data and process to do agent and workflow discovery is what makes this hyper-curated, not off-the-shelf.
-    </p>
+  <!-- ====== 13. HUMAN vs AI ====== -->
+  <div class="slide bg-alt">
+    <span class="tag tag-slate"><span class="tag-dot"></span> Governance</span>
+    <h2>Human vs. AI Responsibility Map</h2>
+    <h3>AI makes humans dramatically more powerful, not redundant.</h3>
+    <table class="resp-table">
+      <tr><th>Task</th><th>Role</th><th>AI Role</th><th>Verdict</th></tr>
+      <tr><td>News &amp; market monitoring</td><td>Analyst</td><td>24/7 alerts on triggers</td><td><span class="badge badge-auto">Automate</span></td></tr>
+      <tr><td>Trading comps maintenance</td><td>Analyst</td><td>Pulls from Bloomberg MCP</td><td><span class="badge badge-auto">Automate</span></td></tr>
+      <tr><td>Earnings data extraction</td><td>Analyst</td><td>Parses releases into model fields</td><td><span class="badge badge-auto">Automate</span></td></tr>
+      <tr><td>CIM initial screening</td><td>Analyst/Assoc.</td><td>Scores against GBL criteria, flags</td><td><span class="badge badge-assist">AI-Assisted</span></td></tr>
+      <tr><td>Earnings call analysis</td><td>Analyst/Assoc.</td><td>Transcript agent produces briefing</td><td><span class="badge badge-assist">AI-Assisted</span></td></tr>
+      <tr><td>IC memo first draft</td><td>Associate</td><td>Generates narrative from data</td><td><span class="badge badge-assist">AI-Assisted</span></td></tr>
+      <tr><td>IC vote / investment decision</td><td>Partners/MD</td><td>None</td><td><span class="badge badge-human">Human Only</span></td></tr>
+      <tr><td>Board participation &amp; governance</td><td>Partners</td><td>Board memo prep only</td><td><span class="badge badge-human">Human Only</span></td></tr>
+      <tr><td>CEO succession at portfolio co.</td><td>Partners/MD</td><td>None</td><td><span class="badge badge-human">Human Only</span></td></tr>
+    </table>
   </div>
 
-  <!-- ====== 11. ADOPTION ====== -->
-  <div class="slide">
-    <span class="tag tag-amber"><span class="tag-dot"></span> Adoption Strategy</span>
-    <h2>Mandated AI Usage Does Not Encourage Adoption</h2>
-    <h3>The most effective enterprise AI rollouts follow a curated discovery pattern, not top-down mandates.</h3>
+  <!-- ====== 14. ADOPTION ====== -->
+  <div class="slide bg-dark">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Adoption Strategy</span>
+    <h2 style="color:#fff;">Mandated AI Usage Does Not Encourage Adoption</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">The most effective enterprise AI rollouts follow a curated discovery pattern, not top-down mandates.</h3>
     <div style="text-align:left; max-width:720px;">
       <ul>
         <li><strong>Curated performance discovery period:</strong> let people find tools that genuinely help their specific workflow</li>
@@ -643,8 +604,8 @@
     </div>
   </div>
 
-  <!-- ====== 12. PRIVACY & COMPLIANCE ====== -->
-  <div class="slide bg-alt">
+  <!-- ====== 15. PRIVACY & COMPLIANCE ====== -->
+  <div class="slide">
     <span class="tag tag-red"><span class="tag-dot"></span> Security &amp; Compliance</span>
     <h2>"Can We Use This and Be Compliant?"</h2>
     <h3>Every tool in the stack can be reviewed independently. The agent architecture is platform-agnostic.</h3>
@@ -666,47 +627,28 @@
           <li>Copilot Studio for agent orchestration</li>
           <li>Microsoft Fabric for data layer</li>
           <li>Copilot for M365 for analyst-level tasks</li>
-          <li>Power Automate as MCP equivalent for scheduling</li>
+          <li>Power Automate as MCP equivalent</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- ====== 13. MCP ====== -->
+  <!-- ====== 16. MCP ====== -->
   <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Technical Foundation</span>
-    <h2 style="color:#fff;">MCP: The Plug That Connects Agents to Live Data</h2>
+    <h2 style="color:#fff;">MCP: Connecting Agents to Live Data</h2>
     <h3 style="color:rgba(255,255,255,0.65);">MCP means Claude can ask Bloomberg in plain English: "Pull SGS's EBITDA margin for the last 8 quarters vs consensus."</h3>
     <table class="compare-table" style="font-size:0.9rem;">
-      <tr>
-        <th>MCP Server</th>
-        <th>Data Available</th>
-        <th>GBL Feasibility</th>
-      </tr>
-      <tr>
-        <td><strong>Bloomberg</strong> (blpapi-mcp)</td>
-        <td>Price data, financials, estimates, news, transcripts</td>
-        <td>Requires Bloomberg license</td>
-      </tr>
-      <tr>
-        <td><strong>FactSet MCP</strong> (official)</td>
-        <td>Fundamentals, estimates, ownership, M&amp;A data</td>
-        <td>Can demo with sandbox</td>
-      </tr>
-      <tr>
-        <td><strong>SEC EDGAR MCP</strong></td>
-        <td>13F filings, insider trades, regulatory filings</td>
-        <td>Free, live demo today</td>
-      </tr>
-      <tr class="highlight-row">
-        <td><strong>Custom GBL MCP</strong></td>
-        <td>Internal databases, portfolio KPIs, IC memo store</td>
-        <td>Build in Day 1</td>
-      </tr>
+      <tr><th>MCP Server</th><th>Data Available</th><th>GBL Feasibility</th></tr>
+      <tr><td><strong>Bloomberg</strong> (blpapi-mcp)</td><td>Price data, financials, estimates, news, transcripts</td><td>Requires Bloomberg license</td></tr>
+      <tr><td><strong>FactSet MCP</strong> (official)</td><td>Fundamentals, estimates, ownership, M&amp;A data</td><td>Can demo with sandbox</td></tr>
+      <tr><td><strong>LSEG / Refinitiv</strong></td><td>Real-time prices, filing data, transcripts</td><td>API key demo possible</td></tr>
+      <tr><td><strong>SEC EDGAR MCP</strong></td><td>13F filings, insider trades, regulatory filings</td><td>Free, live demo today</td></tr>
+      <tr class="highlight-row"><td><strong>Custom GBL MCP</strong></td><td>Internal databases, portfolio KPIs, IC memo store</td><td>Build in Day 1</td></tr>
     </table>
   </div>
 
-  <!-- ====== 14. ROADMAP ====== -->
+  <!-- ====== 17. ROADMAP ====== -->
   <div class="slide">
     <span class="tag tag-gold"><span class="tag-dot"></span> Next Steps</span>
     <h2>Implementation Roadmap</h2>
@@ -716,23 +658,23 @@
         <div class="roadmap-line"></div>
         <div class="roadmap-content">
           <h4>Quick Win: Transcript Analysis</h4>
-          <p>Deploy /simple-transcript-analysis for listed portfolio earnings. GSheet as database. Immediate 60-80% analyst time savings.</p>
+          <p>Deploy /simple-transcript-analysis for listed portfolio earnings. GSheet as database. 60-80% analyst time savings.</p>
         </div>
       </div>
       <div class="roadmap-item">
         <div class="roadmap-time">Weeks 4-8</div>
         <div class="roadmap-line"></div>
         <div class="roadmap-content">
-          <h4>Shared Prompts + RAG Pipeline</h4>
-          <p>Deploy /shared-gdoc-portfolio-prompt. Build RAG over IC memos + CIMs. Management defines prompts of interest in GDrive.</p>
+          <h4>Internal Agent + RAG</h4>
+          <p>Build RAG over internal IC memos + CIMs. Deploy custom GBL MCP. Analysts can query full deal history.</p>
         </div>
       </div>
       <div class="roadmap-item">
         <div class="roadmap-time">Weeks 8-16</div>
         <div class="roadmap-line"></div>
         <div class="roadmap-content">
-          <h4>AI Digester + Communicator</h4>
-          <p>Deploy /ai-digester per partner with personalised frequency and depth. /communicator delivers on schedule, tiered by seniority.</p>
+          <h4>CIM Screener + Digester</h4>
+          <p>Multi-agent CIM screening. /ai-digester per partner. /communicator on schedule. Integrate FactSet/Bloomberg MCP.</p>
         </div>
       </div>
       <div class="roadmap-item">
@@ -740,13 +682,21 @@
         <div class="roadmap-line"></div>
         <div class="roadmap-content">
           <h4>Portfolio Watchdog + Alt Data</h4>
-          <p>Bloomberg/FactSet MCP. SignalScribe for alt data. Slack alerts. Daily digest. Podcast monitoring.</p>
+          <p>Watchdog for all listed holdings. Slack alerts. SignalScribe. Podcast monitoring. Daily digest to partners.</p>
+        </div>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-time">Months 6-12</div>
+        <div class="roadmap-line"></div>
+        <div class="roadmap-content">
+          <h4>Full Stack</h4>
+          <p>Connect all agents. Build GBL AI portal. Analyst training. &euro;200-400K/year total cost baseline.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ====== 15. CLOSING ====== -->
+  <!-- ====== 18. CLOSING ====== -->
   <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Discussion</span>
     <h2 style="color:#fff;">What Should GBL Build First?</h2>
@@ -754,19 +704,19 @@
       <div class="col-card">
         <h3>Questions to Explore</h3>
         <ul>
-          <li>Which agent adds the most immediate value?</li>
-          <li>What frequency and depth for the AI digester?</li>
-          <li>What is interesting for you vs. for analysts?</li>
-          <li>Do you have CapIQ or Bloomberg API access today?</li>
+          <li>Which of these three agents adds the most immediate value?</li>
+          <li>Do you currently have CapIQ or Bloomberg API access?</li>
+          <li>What does the current IC memo process look like?</li>
+          <li>How does the team currently track portfolio company news?</li>
         </ul>
       </div>
       <div class="col-card">
         <h3>Immediate Next Steps</h3>
         <ul>
+          <li>Share demo files + gbl_criteria.py with the team</li>
           <li>Curated discovery period with 1-2 analysts</li>
-          <li>Define approval gates for compliance</li>
-          <li>Come back in a few weeks, collect what people used</li>
-          <li>Surface organic adoption to management</li>
+          <li>Define approval gates, come back in a few weeks</li>
+          <li>Schedule a 2-day internal build workshop</li>
         </ul>
       </div>
     </div>
@@ -777,10 +727,9 @@
 
 </div>
 
-<!-- Navigation -->
 <nav class="nav">
   <button id="prevBtn" onclick="go(-1)">&larr;</button>
-  <span class="counter" id="counter">1 / 15</span>
+  <span class="counter" id="counter">1 / 18</span>
   <button id="nextBtn" onclick="go(1)">&rarr;</button>
 </nav>
 
@@ -796,7 +745,6 @@ function show(n) {
   document.getElementById('prevBtn').disabled = idx === 0;
   document.getElementById('nextBtn').disabled = idx === total - 1;
   document.getElementById('progress').style.width = `${((idx + 1) / total) * 100}%`;
-
   const current = slides[idx];
   const isDark = current.classList.contains('bg-dark');
   document.querySelectorAll('.nav button').forEach(b => {
