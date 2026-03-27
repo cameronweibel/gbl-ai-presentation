@@ -13,11 +13,11 @@
     --navy-800: #1C355E;
     --navy-700: #264270;
     --navy-600: #2F5080;
-    --gold-500: #73C3B4;
-    --gold-400: #8AD0C3;
-    --gold-300: #A5DDD3;
-    --gold-100: #D4F0EA;
-    --gold-50:  #EAF8F5;
+    --gold-500: #FFFFFF;
+    --gold-400: #E2E8F0;
+    --gold-300: #CBD5E1;
+    --gold-100: #F1F5F9;
+    --gold-50:  #F8FAFC;
     --heading:  #0B0B2C;
     --body:     #69697B;
     --muted:    #94A3B8;
@@ -72,16 +72,16 @@
   strong { color: var(--heading); }
 
   .grad-text {
-    background: linear-gradient(to right, var(--gold-500), var(--blue-500), var(--gold-400));
+    background: linear-gradient(to right, var(--navy-800), var(--blue-500), var(--navy-600));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
   .slide.bg-dark .grad-text {
-    background: linear-gradient(to right, var(--gold-400), var(--blue-500), var(--gold-300));
+    background: linear-gradient(to right, #fff, var(--blue-500), #fff);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
 
   .tag { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.9rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.25rem; }
-  .tag-gold { background: var(--gold-50); color: var(--gold-500); }
+  .tag-gold { background: var(--navy-800); color: #fff; }
   .tag-amber { background: #FEF3C7; color: #B45309; }
   .tag-red { background: #FEF2F2; color: var(--red-500); }
   .tag-green { background: #F0FDF4; color: var(--green-600); }
@@ -91,21 +91,22 @@
 
   ul { list-style: none; text-align: left; }
   ul li { padding: 0.45rem 0 0.45rem 1.6rem; position: relative; font-size: 1.1rem; line-height: 1.6; }
-  ul li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 7px; height: 7px; border-radius: 50%; background: var(--gold-500); }
+  ul li::before { content: ''; position: absolute; left: 0; top: 0.85rem; width: 7px; height: 7px; border-radius: 50%; background: var(--navy-800); }
+  .slide.bg-dark ul li::before { background: #fff; }
 
   .bio-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 960px; margin-top: 0.5rem; }
   .bio-card { background: var(--bg); border: 1px solid var(--slate-200); border-radius: 24px; padding: 2rem; text-align: left; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
   .bio-header { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 0.25rem; }
   .bio-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--slate-200); flex-shrink: 0; }
   .bio-card h2 { font-size: 1.5rem; margin-bottom: 0.15rem; }
-  .bio-card .role { color: var(--gold-500); font-size: 0.95rem; margin-bottom: 0.25rem; }
+  .bio-card .role { color: var(--navy-800); font-size: 0.95rem; margin-bottom: 0.25rem; }
   .bio-card .sub-role { color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem; }
   .bio-card ul li { font-size: 0.9rem; padding: 0.25rem 0 0.25rem 1.4rem; }
   .bio-card ul li::before { top: 0.6rem; width: 5px; height: 5px; }
 
   .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 920px; margin-top: 1.5rem; }
   .stat-box { background: var(--bg); border: 1px solid var(--slate-200); border-radius: var(--radius); padding: 1.75rem 1.5rem; text-align: left; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
-  .stat-box .num { font-size: 2.8rem; font-weight: 700; color: var(--gold-500); letter-spacing: -0.03em; }
+  .stat-box .num { font-size: 2.8rem; font-weight: 700; color: var(--navy-800); letter-spacing: -0.03em; }
   .stat-box .desc { font-size: 0.92rem; color: var(--body); margin-top: 0.4rem; line-height: 1.5; }
   .stat-box .source { font-size: 0.72rem; color: var(--muted); margin-top: 0.6rem; }
   .slide.bg-dark .stat-box { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
@@ -123,18 +124,19 @@
   .compare-table th { background: var(--navy-900); color: #fff; padding: 0.85rem 1.25rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; text-align: left; font-weight: 700; }
   .compare-table td { padding: 0.75rem 1.25rem; font-size: 0.95rem; border-bottom: 1px solid var(--slate-100); text-align: left; vertical-align: top; }
   .compare-table tr:last-child td { border-bottom: none; }
-  .compare-table .arrow-col { text-align: center; color: var(--gold-500); font-size: 1.3rem; }
+  .compare-table .arrow-col { text-align: center; color: var(--navy-800); font-size: 1.3rem; }
   .compare-table .highlight-row { background: var(--gold-50); }
 
   .agent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; max-width: 960px; margin-top: 1rem; }
   .agent-card { background: var(--bg); border: 1px solid var(--slate-200); border-radius: var(--radius); padding: 1.75rem 1.5rem; text-align: left; box-shadow: 0 1px 3px rgba(0,0,0,0.04); position: relative; overflow: hidden; }
-  .agent-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--gold-500), var(--gold-400)); }
-  .agent-card .agent-label { font-size: 0.7rem; font-weight: 700; color: var(--gold-500); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .agent-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(to right, var(--navy-800), var(--navy-600)); }
+  .agent-card .agent-label { font-size: 0.7rem; font-weight: 700; color: var(--navy-800); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+  .slide.bg-dark .agent-card .agent-label { color: rgba(255,255,255,0.6); }
   .agent-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--heading); margin-bottom: 0.5rem; max-width: none; }
   .agent-card p { font-size: 0.9rem; line-height: 1.55; }
   .slide.bg-dark .agent-card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
   .slide.bg-dark .agent-card h3 { color: #fff; }
-  .slide.bg-dark .agent-card::before { background: linear-gradient(to right, var(--gold-400), var(--gold-300)); }
+  .slide.bg-dark .agent-card::before { background: linear-gradient(to right, rgba(255,255,255,0.3), rgba(255,255,255,0.1)); }
 
   .resp-table { max-width: 920px; width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 1.25rem; border-radius: var(--radius); overflow: hidden; font-size: 0.88rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
   .resp-table th { background: var(--navy-900); color: #fff; padding: 0.7rem 1rem; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; text-align: left; font-weight: 700; }
@@ -148,33 +150,34 @@
   .flow { display: flex; align-items: center; gap: 0.5rem; max-width: 880px; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center; }
   .flow-box { background: var(--bg); border: 1px solid var(--slate-200); border-radius: 12px; padding: 1rem 1.25rem; text-align: center; min-width: 130px; }
   .flow-box.primary { background: var(--navy-900); color: #fff; border-color: var(--navy-900); }
-  .flow-box.gold { background: var(--gold-50); border-color: var(--gold-500); }
+  .flow-box.gold { background: var(--navy-800); border-color: var(--navy-800); color: #fff; }
   .flow-box .flow-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 0.25rem; }
   .flow-box .flow-label-light { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); margin-bottom: 0.25rem; }
   .flow-box .flow-title { font-size: 0.95rem; font-weight: 700; }
-  .flow-arrow { font-size: 1.5rem; color: var(--gold-500); }
+  .flow-arrow { font-size: 1.5rem; color: var(--navy-800); }
+  .slide.bg-dark .flow-arrow { color: rgba(255,255,255,0.4); }
   .slide.bg-dark .flow-box { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: #fff; }
-  .slide.bg-dark .flow-box.gold { background: rgba(201,168,76,0.15); border-color: var(--gold-500); }
+  .slide.bg-dark .flow-box.gold { background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.3); }
 
   .code-block { background: var(--navy-900); color: #E2E8F0; border-radius: 12px; padding: 1.5rem 2rem; text-align: left; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.7; max-width: 780px; width: 100%; margin-top: 1rem; overflow-x: auto; }
   .code-block .comment { color: #64748B; }
-  .code-block .keyword { color: var(--gold-400); }
+  .code-block .keyword { color: var(--blue-500); }
   .code-block .string { color: #86EFAC; }
 
   .roadmap { max-width: 880px; width: 100%; margin-top: 1.5rem; }
   .roadmap-item { display: grid; grid-template-columns: 100px 3px 1fr; gap: 1.25rem; align-items: start; }
-  .roadmap-time { text-align: right; font-size: 0.82rem; font-weight: 700; color: var(--gold-500); padding-top: 0.9rem; }
+  .roadmap-time { text-align: right; font-size: 0.82rem; font-weight: 700; color: var(--navy-800); padding-top: 0.9rem; }
   .roadmap-line { background: var(--slate-200); position: relative; }
-  .roadmap-line::before { content: ''; position: absolute; top: 1rem; left: -4px; width: 11px; height: 11px; border-radius: 50%; background: var(--gold-500); border: 2px solid var(--bg); }
+  .roadmap-line::before { content: ''; position: absolute; top: 1rem; left: -4px; width: 11px; height: 11px; border-radius: 50%; background: var(--navy-800); border: 2px solid var(--bg); }
   .roadmap-content { background: var(--bg); border: 1px solid var(--slate-200); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
   .roadmap-content h4 { font-size: 0.95rem; font-weight: 700; color: var(--heading); margin-bottom: 0.25rem; }
   .roadmap-content p { font-size: 0.85rem; line-height: 1.5; }
 
-  .progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(to right, var(--gold-500), var(--gold-400)); transition: width 0.3s ease; z-index: 100; }
+  .progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(to right, var(--navy-800), var(--navy-600)); transition: width 0.3s ease; z-index: 100; }
 
   .nav { position: fixed; bottom: 1.5rem; right: 1.5rem; display: flex; align-items: center; gap: 0.6rem; z-index: 100; }
   .nav button { width: 38px; height: 38px; border-radius: 8px; border: 1px solid var(--slate-200); background: var(--bg); color: var(--slate-700); font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-  .nav button:hover { background: var(--gold-500); color: #fff; border-color: var(--gold-500); }
+  .nav button:hover { background: var(--navy-800); color: #fff; border-color: var(--navy-800); }
   .nav button:disabled { opacity: 0.25; cursor: not-allowed; }
   .nav .counter { font-size: 0.78rem; color: var(--muted); font-weight: 700; }
 
@@ -266,7 +269,7 @@
       <span class="flow-arrow">&rarr;</span>
       <div class="flow-box gold">
         <div class="flow-label">Layer 3</div>
-        <div class="flow-title" style="color:var(--gold-500);">GBL Curation</div>
+        <div class="flow-title" style="color:#fff;">GBL Curation</div>
         <p style="font-size:0.8rem; margin-top:0.3rem;">Proprietary criteria</p>
       </div>
     </div>
@@ -366,7 +369,7 @@
       <span class="flow-arrow">&rarr;</span>
       <div class="flow-box gold">
         <div class="flow-label">Output</div>
-        <div class="flow-title" style="color:var(--gold-500);">Briefing</div>
+        <div class="flow-title" style="color:#fff;">Briefing</div>
         <p style="font-size:0.78rem; margin-top:0.25rem;">JSON + GSheet</p>
       </div>
     </div>
@@ -557,7 +560,7 @@
       <span class="flow-arrow">&rarr;</span>
       <div class="flow-box gold">
         <div class="flow-label">Skill 4</div>
-        <div class="flow-title" style="color:var(--gold-500);">/communicator</div>
+        <div class="flow-title" style="color:#fff;">/communicator</div>
         <p style="font-size:0.8rem; margin-top:0.25rem;">Scheduled delivery</p>
       </div>
     </div>
