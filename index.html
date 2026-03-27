@@ -9,15 +9,15 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --navy-900: #0A1628;
-    --navy-800: #111D35;
-    --navy-700: #1A2844;
-    --navy-600: #243556;
-    --gold-500: #C9A84C;
-    --gold-400: #D4B96A;
-    --gold-300: #E0CA88;
-    --gold-100: #F5EDD4;
-    --gold-50:  #FAF6EC;
+    --navy-900: #101A2B;
+    --navy-800: #1C355E;
+    --navy-700: #264270;
+    --navy-600: #2F5080;
+    --gold-500: #73C3B4;
+    --gold-400: #8AD0C3;
+    --gold-300: #A5DDD3;
+    --gold-100: #D4F0EA;
+    --gold-50:  #EAF8F5;
     --heading:  #0B0B2C;
     --body:     #69697B;
     --muted:    #94A3B8;
@@ -30,7 +30,8 @@
     --green-500: #22C55E;
     --green-600: #16A34A;
     --amber-500: #F59E0B;
-    --blue-500:  #3B82F6;
+    --blue-500:  #59B7D4;
+    --silver:    #BFC9D0;
     --radius:    16px;
   }
 
@@ -71,11 +72,11 @@
   strong { color: var(--heading); }
 
   .grad-text {
-    background: linear-gradient(to right, var(--gold-500), var(--gold-400), var(--gold-300));
+    background: linear-gradient(to right, var(--gold-500), var(--blue-500), var(--gold-400));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
   .slide.bg-dark .grad-text {
-    background: linear-gradient(to right, var(--gold-400), var(--gold-300), var(--gold-500));
+    background: linear-gradient(to right, var(--gold-400), var(--blue-500), var(--gold-300));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
 
