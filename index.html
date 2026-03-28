@@ -429,74 +429,77 @@
         </div>
       </div>
 
-      <!-- Divider -->
-      <div style="text-align:center; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin:0.4rem 0;">Agents &amp; Skills</div>
+      <!-- AGENTS CENTER COLUMN with side inputs -->
+      <div style="display:flex; gap:1.5rem; justify-content:center; margin-top:0.5rem;">
 
-      <!-- AGENTS IN CENTER COLUMN -->
-      <div style="display:flex; flex-direction:column; align-items:center; gap:0.35rem;">
-
-        <!-- Skill: transcript-downloader -->
-        <div style="display:flex; align-items:center; gap:0.6rem;">
-          <div style="border:2px dashed var(--slate-400); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px; background:rgba(28,53,94,0.06);">
-            <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Reusable Skill</div>
-            <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/transcript-downloader</div>
-          </div>
-        </div>
-
-        <div style="font-size:1rem; color:var(--navy-800);">&darr;</div>
-
-        <!-- Agent 1 -->
-        <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px; background:#fff;">
-          <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 1</div>
-          <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/simple-transcript-analysis</div>
-        </div>
-
-        <div style="font-size:1rem; color:var(--navy-800);">&darr;</div>
-
-        <!-- Agent 2 with GDrive input -->
-        <div style="display:flex; align-items:center; gap:0.6rem;">
-          <div style="border:1px solid var(--slate-300); border-radius:8px; padding:0.35rem 0.7rem; text-align:center; background:#fff; font-size:0.75rem;">
+        <!-- Left side inputs -->
+        <div style="display:flex; flex-direction:column; align-items:flex-end; justify-content:center; gap:6.5rem; padding-top:1rem;">
+          <div style="border:1px solid var(--slate-300); border-radius:8px; padding:0.35rem 0.7rem; text-align:center; background:#fff; font-size:0.72rem;">
             <div style="font-size:0.55rem; text-transform:uppercase; color:var(--muted);">Human Input</div>
-            <div style="font-weight:700; color:var(--navy-900);">GDrive Prompts</div>
-          </div>
-          <span style="color:var(--navy-800);">&rarr;</span>
-          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px; background:#fff;">
-            <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 2</div>
-            <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/prompt-analysis</div>
+            <div style="font-weight:700; color:var(--navy-900);">Excel/GSheet<br>Custom Prompts</div>
           </div>
         </div>
 
-        <div style="font-size:1rem; color:var(--navy-800);">&darr;</div>
-
-        <!-- Agent 3 with fan-out -->
-        <div style="display:flex; align-items:center; gap:0.6rem;">
-          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px; background:#fff;">
-            <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 3</div>
-            <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/ai-digester</div>
-          </div>
-          <span style="color:var(--navy-800);">&rarr;</span>
-          <div style="display:flex; flex-direction:column; gap:0.2rem;">
-            <div style="background:var(--navy-900); color:#fff; border-radius:5px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600;">Analyst</div>
-            <div style="background:var(--navy-800); color:#fff; border-radius:5px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600;">Associate</div>
-            <div style="background:var(--navy-700); color:#fff; border-radius:5px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600;">VP</div>
-            <div style="background:var(--navy-600); color:#fff; border-radius:5px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600;">Partner</div>
-          </div>
+        <!-- Arrows from left -->
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6.2rem; padding-top:1rem;">
+          <span style="color:var(--navy-800); font-size:0.9rem;">&rarr;</span>
         </div>
 
-        <div style="font-size:1rem; color:var(--navy-800);">&darr;</div>
+        <!-- CENTER COLUMN: all agents stacked -->
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.3rem;">
 
-        <!-- Agent 4 with delivery channels -->
-        <div style="display:flex; align-items:center; gap:0.6rem;">
-          <div style="background:rgba(28,53,94,0.08); border:2px solid var(--navy-800); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px;">
-            <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 4</div>
-            <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/communicator</div>
+          <div style="border:2px dashed var(--slate-400); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px; background:rgba(28,53,94,0.06);">
+            <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Reusable Skill</div>
+            <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/transcript-downloader</div>
           </div>
-          <span style="color:var(--navy-800);">&rarr;</span>
+
+          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+
+          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px; background:#fff;">
+            <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 1</div>
+            <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/simple-transcript-analysis</div>
+          </div>
+
+          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+
+          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px; background:#fff;">
+            <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 2</div>
+            <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/prompt-analysis</div>
+          </div>
+
+          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+
+          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px; background:#fff;">
+            <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 3</div>
+            <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/ai-digester</div>
+          </div>
+
+          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+
+          <div style="background:rgba(28,53,94,0.08); border:2px solid var(--navy-800); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px;">
+            <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 4</div>
+            <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/communicator</div>
+          </div>
+
+          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+
+          <!-- Channels -->
           <div style="display:flex; gap:0.3rem;">
             <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">Slack</div>
             <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">Email</div>
-            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">GDrive</div>
+            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">Teams</div>
           </div>
+
+          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+
+          <!-- Audience levels -->
+          <div style="display:flex; gap:0.25rem;">
+            <div style="background:var(--navy-900); color:#fff; border-radius:5px; padding:0.2rem 0.55rem; font-size:0.68rem; font-weight:600;">Analyst</div>
+            <div style="background:var(--navy-800); color:#fff; border-radius:5px; padding:0.2rem 0.55rem; font-size:0.68rem; font-weight:600;">Associate</div>
+            <div style="background:var(--navy-700); color:#fff; border-radius:5px; padding:0.2rem 0.55rem; font-size:0.68rem; font-weight:600;">VP</div>
+            <div style="background:var(--navy-600); color:#fff; border-radius:5px; padding:0.2rem 0.55rem; font-size:0.68rem; font-weight:600;">Partner</div>
+          </div>
+
         </div>
 
       </div>
@@ -620,6 +623,12 @@
     <iframe src="analyses/NVDA_historical_matrix.html" style="width:100%; height:75vh; border:1px solid var(--slate-200); border-radius:12px; background:#0F172A;" frameborder="0"></iframe>
   </div>
 
+  <!-- ====== TRANSITION QUESTION ====== -->
+  <div class="slide bg-dark">
+    <h2 style="color:#fff; font-size:2.4rem; max-width:700px;">What if management wants different questions for different companies?</h2>
+    <h3 style="color:rgba(255,255,255,0.55); margin-top:1.5rem; max-width:600px;">The hardcoded screen works. But every portfolio company is different. The prompts should come from the people who know the business best.</h3>
+  </div>
+
   <!-- ====== 12. /SHARED-GDOC-PROMPT-ANALYSIS + /AI-DIGESTER ====== -->
   <div class="slide bg-alt">
     <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Agents 2 &amp; 3</span>
@@ -627,20 +636,24 @@
     <h3>Management defines the prompts. The digester tailors output per level. Same data, four noise levels.</h3>
     <div class="two-col" style="gap:2rem; align-items:start;">
       <div>
-        <h3 style="margin-bottom:0.5rem;">/shared-gdoc-prompt-analysis</h3>
-        <p style="font-size:0.8rem; margin-bottom:0.4rem;">Management writes plain-English questions in a shared YAML file. The agent reads these on every run:</p>
-        <div class="code-block" style="font-size:0.75rem; margin-top:0;">
-          <span class="comment"># prompts/NVDA.yaml -editable by anyone</span><br><br>
-          <span class="keyword">prompt_1:</span> <span class="string">"Value chain changes"</span><br>
-          <span class="keyword">prompt_2:</span> <span class="string">"End market growth trajectory"</span><br>
-          <span class="keyword">prompt_3:</span> <span class="string">"Capital allocation tone"</span><br>
-          <span class="keyword">prompt_4:</span> <span class="string">"Guidance credibility"</span><br>
-          <span class="keyword">prompt_5:</span> <span class="string">"Key risks &amp; emphasis shifts"</span><br>
-          <span class="keyword">prompt_6:</span> <span class="string">"AI demand &amp; concentration"</span><br><br>
-          <span class="comment"># Anyone on the team adds prompts.</span><br>
-          <span class="comment"># No code changes needed.</span>
+        <h3 style="margin-bottom:0.5rem;">/prompt-analysis</h3>
+        <p style="font-size:0.8rem; margin-bottom:0.4rem;">Management writes plain-English questions in a shared Excel file. The agent reads these on every run:</p>
+        <div style="overflow-x:auto; margin-top:0;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.7rem; background:#fff; border-radius:8px; overflow:hidden;">
+            <tr style="background:var(--navy-900); color:#fff;">
+              <th style="padding:0.35rem 0.5rem; text-align:left;">Company</th>
+              <th style="padding:0.35rem 0.5rem; text-align:left;">Ticker</th>
+              <th style="padding:0.35rem 0.5rem; text-align:left;">Prompt</th>
+              <th style="padding:0.35rem 0.5rem; text-align:left;">Frequency</th>
+            </tr>
+            <tr><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">NVIDIA</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">NVDA</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">Value chain changes</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">Every Q</td></tr>
+            <tr><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">NVIDIA</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">NVDA</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">End market growth</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">Every Q</td></tr>
+            <tr><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">NVIDIA</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">NVDA</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">Capital allocation tone</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">Every Q</td></tr>
+            <tr><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">SGS Group</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">SGSN.SW</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">Organic revenue by division</td><td style="padding:0.25rem 0.5rem; border-bottom:1px solid #e2e8f0;">Every Q</td></tr>
+            <tr><td style="padding:0.25rem 0.5rem;">Adidas</td><td style="padding:0.25rem 0.5rem;">ADS.DE</td><td style="padding:0.25rem 0.5rem;">China recovery pace</td><td style="padding:0.25rem 0.5rem;">Every Q</td></tr>
+          </table>
         </div>
-        <p style="font-size:0.85rem; margin-top:0.75rem;">6 prompts &rarr; 6 findings with signal + confidence + key quotes. Executive summary table.</p>
+        <p style="font-size:0.8rem; margin-top:0.6rem;">prompts/portfolio_prompts.xlsx - anyone adds rows. Different prompts per company, different frequencies. No code changes.</p>
       </div>
       <div>
         <h3 style="margin-bottom:0.5rem;">/ai-digester</h3>
@@ -679,11 +692,11 @@
     <h2 style="color:#fff;">/communicator + Scheduled Pipeline</h2>
     <h3 style="color:rgba(255,255,255,0.65);">The last mile. Route each digest to the right person, at the right cadence, on the right channel.</h3>
     <table class="resp-table" style="margin-bottom:1.25rem;">
-      <tr><th>Level</th><th>Channel</th><th>Frequency</th><th>Priority</th></tr>
-      <tr><td>Analyst</td><td>Slack #earnings-analysis</td><td>Real-time (on transcript drop)</td><td><span class="badge badge-auto">Normal</span></td></tr>
-      <tr><td>Associate</td><td>Slack #investment-team</td><td>Daily digest</td><td><span class="badge badge-auto">Normal</span></td></tr>
-      <tr><td>VP</td><td>Email + Slack DM</td><td>Weekly summary</td><td><span class="badge badge-assist">High</span></td></tr>
-      <tr><td>Partner</td><td>Email + Slack DM</td><td>Weekly summary</td><td><span class="badge badge-human">Critical</span></td></tr>
+      <tr><th>Level</th><th>Channel</th><th>Frequency</th></tr>
+      <tr><td>Analyst</td><td>Slack #earnings-analysis</td><td>Real-time (on transcript drop)</td></tr>
+      <tr><td>Associate</td><td>Slack #investment-team</td><td>Daily digest</td></tr>
+      <tr><td>VP</td><td>Email + Slack DM</td><td>Weekly summary</td></tr>
+      <tr><td>Partner</td><td>Email + Slack DM</td><td>Weekly summary</td></tr>
     </table>
     <div class="flow" style="margin-bottom:1rem;">
       <div class="flow-box">
@@ -831,8 +844,8 @@
       </div>
       <div class="agent-card">
         <div class="agent-label">News Intelligence</div>
-        <h3>SignalScribe Integration</h3>
-        <p>Continuous news monitoring with AI-scored relevance. Detect emerging narratives before they reach sell-side research.</p>
+        <h3>AI Signals Integration</h3>
+        <p>Monitor news, YouTube videos, and industry newsletters with AI-scored relevance. Detect emerging narratives before they reach sell-side research.</p>
       </div>
       <div class="agent-card">
         <div class="agent-label">Thesis Validation</div>
@@ -883,7 +896,7 @@
   <div class="slide bg-alt">
     <span class="tag tag-slate"><span class="tag-dot"></span> Governance</span>
     <h2>Human vs. AI Responsibility Map</h2>
-    <h3>AI makes humans dramatically more powerful, not redundant.</h3>
+    <h3>AI makes humans more powerful, not redundant.</h3>
     <table class="resp-table">
       <tr><th>Task</th><th>Role</th><th>AI Role</th><th>Verdict</th></tr>
       <tr><td>News &amp; market monitoring</td><td>Analyst</td><td>24/7 alerts on triggers</td><td><span class="badge badge-auto">Automate</span></td></tr>
