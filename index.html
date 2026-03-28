@@ -343,87 +343,105 @@
     </p>
   </div>
 
-  <!-- ====== TERMINOLOGY: AGENTS, SKILLS, TOOLS ====== -->
+  <!-- ====== GLOSSARY: AGENTS, SKILLS, TOOLS ====== -->
   <div class="slide bg-dark">
-    <span class="tag tag-gold"><span class="tag-dot"></span> How It Works</span>
-    <h2 style="color:#fff;">Agents, Skills, and Tools</h2>
-    <h3 style="color:rgba(255,255,255,0.65);">Each demo is one agent. Each agent has skills. Skills connect to tools and data directly, not through a web interface.</h3>
+    <span class="tag tag-gold"><span class="tag-dot"></span> Glossary</span>
+    <h2 style="color:#fff;">Terms We'll Use Today</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">Each demo is one agent. Each agent has skills. Skills connect to tools and data directly.</h3>
 
-    <div style="display:flex; gap:1.5rem; max-width:860px; margin-top:1.25rem; flex-wrap:wrap; justify-content:center;">
+    <div style="display:flex; gap:1.5rem; max-width:860px; margin-top:1.5rem; flex-wrap:wrap; justify-content:center;">
 
       <!-- Agent -->
-      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1rem 1.1rem;">
-        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
-          <div style="width:32px; height:32px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">&#129302;</div>
-          <div style="font-weight:700; font-size:1rem;">Agent</div>
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1.1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.6rem;">
+          <div style="width:36px; height:36px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#129302;</div>
+          <div style="font-weight:700; font-size:1.1rem;">Agent</div>
         </div>
-        <p style="font-size:0.82rem; line-height:1.5; color:rgba(255,255,255,0.75);">An autonomous workflow that makes decisions, calls skills, and delivers a result. Each demo builds one agent.</p>
-        <div style="margin-top:0.5rem; font-size:0.72rem; color:rgba(255,255,255,0.45);">Example: Transcript Analysis Agent</div>
+        <p style="font-size:0.88rem; line-height:1.5; color:rgba(255,255,255,0.8);">An autonomous workflow that makes decisions, calls skills, and delivers a result.</p>
+        <p style="font-size:0.88rem; line-height:1.5; color:rgba(255,255,255,0.8); margin-top:0.4rem;"><strong>Each demo builds one agent.</strong></p>
+        <div style="margin-top:0.6rem; font-size:0.75rem; color:rgba(255,255,255,0.4);">Example: Transcript Analysis Agent</div>
       </div>
 
       <!-- Skill -->
-      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1rem 1.1rem;">
-        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
-          <div style="width:32px; height:32px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">&#9889;</div>
-          <div style="font-weight:700; font-size:1rem;">Skill</div>
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1.1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.6rem;">
+          <div style="width:36px; height:36px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#9889;</div>
+          <div style="font-weight:700; font-size:1.1rem;">Skill</div>
         </div>
-        <p style="font-size:0.82rem; line-height:1.5; color:rgba(255,255,255,0.75);">A reusable step an agent can call. Like a recipe: specific instructions for one task. Multiple agents share the same skills.</p>
-        <div style="margin-top:0.5rem; font-size:0.72rem; color:rgba(255,255,255,0.45);">Example: /transcript-downloader, /ai-digester</div>
+        <p style="font-size:0.88rem; line-height:1.5; color:rgba(255,255,255,0.8);">A reusable step an agent can call. Like a recipe: specific instructions for one task.</p>
+        <p style="font-size:0.88rem; line-height:1.5; color:rgba(255,255,255,0.8); margin-top:0.4rem;"><strong>Multiple agents share the same skills.</strong></p>
+        <div style="margin-top:0.6rem; font-size:0.75rem; color:rgba(255,255,255,0.4);">Example: /transcript-downloader, /ai-digester</div>
       </div>
 
       <!-- Tool / MCP -->
-      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1rem 1.1rem;">
-        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
-          <div style="width:32px; height:32px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">&#128268;</div>
-          <div style="font-weight:700; font-size:1rem;">Tool (MCP)</div>
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1.1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.6rem;">
+          <div style="width:36px; height:36px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.2rem;">&#128268;</div>
+          <div style="font-weight:700; font-size:1.1rem;">Tool (MCP)</div>
         </div>
-        <p style="font-size:0.82rem; line-height:1.5; color:rgba(255,255,255,0.75);">A direct connection to data or a service. Claude talks to APIs, databases, and files directly, not through a browser or web UI.</p>
-        <div style="margin-top:0.5rem; font-size:0.72rem; color:rgba(255,255,255,0.45);">Example: FMP API, Google Drive, Slack</div>
+        <p style="font-size:0.88rem; line-height:1.5; color:rgba(255,255,255,0.8);">A direct connection to data or a service. No browser, no web UI, no copy-paste.</p>
+        <p style="font-size:0.88rem; line-height:1.5; color:rgba(255,255,255,0.8); margin-top:0.4rem;"><strong>Claude connects to APIs like a developer would.</strong></p>
+        <div style="margin-top:0.6rem; font-size:0.75rem; color:rgba(255,255,255,0.4);">Example: FMP API, Google Drive, Slack</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====== OUR TOOLSTACK ====== -->
+  <div class="slide">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Toolstack</span>
+    <h2>What We're Using Today</h2>
+    <h3>Claude connects to data directly via APIs, not through a web interface. Here are the tools in today's demos.</h3>
+
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; max-width:820px; margin-top:1.5rem;">
+
+      <!-- Claude Code -->
+      <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:1rem; text-align:center;">
+        <img src="logos/claude.svg" alt="Claude" style="width:48px; height:48px; margin-bottom:0.5rem;">
+        <h3 style="font-size:0.95rem; margin-bottom:0.25rem;">Claude Code</h3>
+        <p style="font-size:0.78rem; color:var(--muted); line-height:1.4;">AI agent orchestrator. Reads files, writes code, calls APIs, runs skills. The brain.</p>
+      </div>
+
+      <!-- Wispr Flow -->
+      <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:1rem; text-align:center;">
+        <img src="logos/wispr.svg" alt="Wispr Flow" style="width:48px; height:48px; margin-bottom:0.5rem;">
+        <h3 style="font-size:0.95rem; margin-bottom:0.25rem;">Wispr Flow</h3>
+        <p style="font-size:0.78rem; color:var(--muted); line-height:1.4;">Voice-to-text interface. ~3x faster than typing. Removes filler words, custom vocabulary.</p>
+      </div>
+
+      <!-- FMP API -->
+      <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:1rem; text-align:center;">
+        <img src="logos/fmp.svg" alt="FMP" style="width:48px; height:48px; margin-bottom:0.5rem;">
+        <h3 style="font-size:0.95rem; margin-bottom:0.25rem;">FMP API</h3>
+        <p style="font-size:0.78rem; color:var(--muted); line-height:1.4;">Financial Modeling Prep. Earnings transcripts, financials, estimates. Direct API access.</p>
+      </div>
+
+      <!-- Google Drive -->
+      <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:1rem; text-align:center;">
+        <img src="logos/gdrive.png" alt="Google Drive" style="width:48px; height:48px; margin-bottom:0.5rem; object-fit:contain;">
+        <h3 style="font-size:0.95rem; margin-bottom:0.25rem;">Google Drive</h3>
+        <p style="font-size:0.78rem; color:var(--muted); line-height:1.4;">Shared file storage. Prompts, reports, and deliveries synced to the team's GDrive.</p>
+      </div>
+
+      <!-- Slack -->
+      <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:1rem; text-align:center;">
+        <img src="logos/slack.png" alt="Slack" style="width:48px; height:48px; margin-bottom:0.5rem; object-fit:contain;">
+        <h3 style="font-size:0.95rem; margin-bottom:0.25rem;">Slack</h3>
+        <p style="font-size:0.78rem; color:var(--muted); line-height:1.4;">Delivery channel. Agents post alerts, digests, and reports to team channels and DMs.</p>
+      </div>
+
+      <!-- Excel / GSheet -->
+      <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:1rem; text-align:center;">
+        <img src="logos/gsheets.png" alt="Excel/GSheet" style="width:48px; height:48px; margin-bottom:0.5rem; object-fit:contain;">
+        <h3 style="font-size:0.95rem; margin-bottom:0.25rem;">Excel / GSheet</h3>
+        <p style="font-size:0.78rem; color:var(--muted); line-height:1.4;">Prompt storage and data output. Management edits prompts in Excel, agents read them.</p>
       </div>
 
     </div>
 
-    <!-- Direct data access callout -->
-    <div style="max-width:860px; margin-top:1.25rem; padding:0.8rem 1.2rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; display:flex; align-items:center; gap:1rem;">
-      <div style="font-size:1.3rem; flex-shrink:0;">&#128279;</div>
-      <div>
-        <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.2rem;">Direct data access, not web scraping</div>
-        <p style="font-size:0.8rem; color:rgba(255,255,255,0.65); line-height:1.5;">Claude connects directly to APIs and databases via MCP (Model Context Protocol). No browser automation, no copy-paste. The agent reads Bloomberg, FactSet, or your internal data the same way a developer would: through a structured API call.</p>
-      </div>
-    </div>
-
-    <!-- Tool logos row -->
-    <div style="display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-top:1rem;">
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">&#9729;&#65039;</div>
-        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Claude Code</div>
-      </div>
-      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">&#127908;</div>
-        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Wispr Flow</div>
-      </div>
-      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">&#128200;</div>
-        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">FMP API</div>
-      </div>
-      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">&#128230;</div>
-        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Google Drive</div>
-      </div>
-      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">&#128172;</div>
-        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Slack</div>
-      </div>
-      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
-      <div style="text-align:center;">
-        <div style="font-size:1.4rem;">&#128202;</div>
-        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Excel/GSheet</div>
-      </div>
-    </div>
+    <p style="margin-top:1rem; max-width:700px; font-size:0.88rem; color:var(--muted);">
+      All tools connect via MCP (Model Context Protocol). Claude reads data the same way a developer would: structured API calls, not browser automation.
+    </p>
   </div>
 
   <!-- ====== OVERVIEW: THREE DEMOS ====== -->
@@ -1114,7 +1132,7 @@
 
     </div>
     <p style="margin-top:2rem; color:rgba(255,255,255,0.4); font-size:0.9rem;">
-      Cameron Weibel &amp; Spencer Johnson &middot; Hebbian GmbH &middot; cameron@hebbian.ch
+      Cameron Weibel &amp; Spencer Johnson
     </p>
   </div>
 
