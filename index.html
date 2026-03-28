@@ -343,39 +343,90 @@
     </p>
   </div>
 
-  <!-- ====== 4. TRADITIONAL vs AGENT ====== -->
-  <div class="slide">
-    <span class="tag tag-amber"><span class="tag-dot"></span> The Time Arbitrage</span>
-    <h2>Traditional vs. Agent-Augmented Research</h2>
-    <table class="compare-table">
-      <tr>
-        <th style="width:38%;">Traditional</th>
-        <th style="width:5%;"></th>
-        <th style="width:38%;">Agent-Augmented</th>
-        <th style="width:19%;">Savings</th>
-      </tr>
-      <tr>
-        <td>Analyst reads 8 earnings call PDFs, takes notes, writes summary</td>
-        <td class="arrow-col">&rarr;</td>
-        <td>Agent fetches all 8 transcripts, extracts sentiment + capital allocation signals, surfaces anomalies</td>
-        <td><strong>3-4 hrs &rarr; 90s</strong></td>
-      </tr>
-      <tr>
-        <td>Analyst checks CapIQ daily for insider trades on watchlist</td>
-        <td class="arrow-col">&rarr;</td>
-        <td>Monitoring agent checks every 15 min, Slacks the team only when threshold is crossed</td>
-        <td><strong>30 min/day &rarr; 0</strong></td>
-      </tr>
-      <tr class="highlight-row">
-        <td>Partner reads 60-page CIM, extracts criteria fit</td>
-        <td class="arrow-col">&rarr;</td>
-        <td>Screening agent reads CIM, scores fit against GBL criteria, flags risks, outputs 1-page summary</td>
-        <td><strong>4-6 hrs &rarr; 4 min</strong></td>
-      </tr>
-    </table>
+  <!-- ====== TERMINOLOGY: AGENTS, SKILLS, TOOLS ====== -->
+  <div class="slide bg-dark">
+    <span class="tag tag-gold"><span class="tag-dot"></span> How It Works</span>
+    <h2 style="color:#fff;">Agents, Skills, and Tools</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">Each demo is one agent. Each agent has skills. Skills connect to tools and data directly, not through a web interface.</h3>
+
+    <div style="display:flex; gap:1.5rem; max-width:860px; margin-top:1.25rem; flex-wrap:wrap; justify-content:center;">
+
+      <!-- Agent -->
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1rem 1.1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+          <div style="width:32px; height:32px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">&#129302;</div>
+          <div style="font-weight:700; font-size:1rem;">Agent</div>
+        </div>
+        <p style="font-size:0.82rem; line-height:1.5; color:rgba(255,255,255,0.75);">An autonomous workflow that makes decisions, calls skills, and delivers a result. Each demo builds one agent.</p>
+        <div style="margin-top:0.5rem; font-size:0.72rem; color:rgba(255,255,255,0.45);">Example: Transcript Analysis Agent</div>
+      </div>
+
+      <!-- Skill -->
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1rem 1.1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+          <div style="width:32px; height:32px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">&#9889;</div>
+          <div style="font-weight:700; font-size:1rem;">Skill</div>
+        </div>
+        <p style="font-size:0.82rem; line-height:1.5; color:rgba(255,255,255,0.75);">A reusable step an agent can call. Like a recipe: specific instructions for one task. Multiple agents share the same skills.</p>
+        <div style="margin-top:0.5rem; font-size:0.72rem; color:rgba(255,255,255,0.45);">Example: /transcript-downloader, /ai-digester</div>
+      </div>
+
+      <!-- Tool / MCP -->
+      <div style="flex:1; min-width:220px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:1rem 1.1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+          <div style="width:32px; height:32px; border-radius:8px; background:var(--navy-600); display:flex; align-items:center; justify-content:center; font-size:1.1rem;">&#128268;</div>
+          <div style="font-weight:700; font-size:1rem;">Tool (MCP)</div>
+        </div>
+        <p style="font-size:0.82rem; line-height:1.5; color:rgba(255,255,255,0.75);">A direct connection to data or a service. Claude talks to APIs, databases, and files directly, not through a browser or web UI.</p>
+        <div style="margin-top:0.5rem; font-size:0.72rem; color:rgba(255,255,255,0.45);">Example: FMP API, Google Drive, Slack</div>
+      </div>
+
+    </div>
+
+    <!-- Direct data access callout -->
+    <div style="max-width:860px; margin-top:1.25rem; padding:0.8rem 1.2rem; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); border-radius:10px; display:flex; align-items:center; gap:1rem;">
+      <div style="font-size:1.3rem; flex-shrink:0;">&#128279;</div>
+      <div>
+        <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.2rem;">Direct data access, not web scraping</div>
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.65); line-height:1.5;">Claude connects directly to APIs and databases via MCP (Model Context Protocol). No browser automation, no copy-paste. The agent reads Bloomberg, FactSet, or your internal data the same way a developer would: through a structured API call.</p>
+      </div>
+    </div>
+
+    <!-- Tool logos row -->
+    <div style="display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-top:1rem;">
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">&#9729;&#65039;</div>
+        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Claude Code</div>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">&#127908;</div>
+        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Wispr Flow</div>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">&#128200;</div>
+        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">FMP API</div>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">&#128230;</div>
+        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Google Drive</div>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">&#128172;</div>
+        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Slack</div>
+      </div>
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.3);">+</div>
+      <div style="text-align:center;">
+        <div style="font-size:1.4rem;">&#128202;</div>
+        <div style="font-size:0.65rem; color:rgba(255,255,255,0.45); margin-top:0.15rem;">Excel/GSheet</div>
+      </div>
+    </div>
   </div>
 
-  <!-- ====== 5. OVERVIEW: THREE DEMOS ====== -->
+  <!-- ====== OVERVIEW: THREE DEMOS ====== -->
   <div class="slide bg-alt">
     <span class="tag tag-gold"><span class="tag-dot"></span> Session Overview</span>
     <h2>Three Agents, Three Use Cases</h2>
@@ -435,7 +486,7 @@
     </div>
     <div style="text-align:left; max-width:760px;">
       <ul>
-        <li><strong>Wispr Flow:</strong> voice-to-code interface. Dictate what you want, Claude Code builds it</li>
+        <li><strong>Wispr Flow:</strong> voice-to-code interface, roughly 3x faster than typing. Dictate what you want, Claude Code builds it</li>
         <li><strong>Skill vs. Agent:</strong> /transcript-downloader is a skill because multiple agents reuse it in parallel</li>
         <li><strong>Package &amp; schedule:</strong> once built, the full pipeline runs automatically every earnings season</li>
       </ul>
