@@ -477,67 +477,88 @@
       </div>
 
       <!-- AGENTS CENTER COLUMN -->
-      <div style="display:flex; flex-direction:column; align-items:center; gap:0.3rem; margin-top:0.5rem; position:relative;">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:0.25rem; margin-top:0.5rem; position:relative;">
 
-          <div style="border:2px dashed var(--slate-400); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px; background:rgba(28,53,94,0.06);">
+          <!-- Skill -->
+          <div style="border:2px dashed var(--slate-400); border-radius:10px; padding:0.35rem 1rem; text-align:center; min-width:260px; background:rgba(28,53,94,0.06);">
             <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Reusable Skill</div>
             <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/transcript-downloader</div>
           </div>
 
-          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+          <div style="font-size:0.85rem; color:var(--navy-800);">&darr;</div>
 
-          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px; background:#fff;">
+          <!-- Agent 1 -->
+          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.35rem 1rem; text-align:center; min-width:260px; background:#fff;">
             <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 1</div>
             <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/simple-transcript-analysis</div>
           </div>
 
-          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+          <div style="font-size:0.85rem; color:var(--navy-800);">&darr;</div>
 
+          <!-- Historical - 12x parallel -->
+          <div style="position:relative;">
+            <div style="position:absolute; left:calc(100% + 0.6rem); top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:0.4rem;">
+              <span style="color:var(--navy-800); font-size:0.85rem;">&larr;</span>
+              <div style="border:1px solid var(--slate-300); border-radius:8px; padding:0.25rem 0.5rem; text-align:center; background:#fff; font-size:0.65rem; white-space:nowrap;">
+                <div style="font-weight:700; color:var(--navy-900);">12x parallel</div>
+              </div>
+            </div>
+            <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.35rem 1rem; text-align:center; min-width:260px; background:#fff;">
+              <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 1b</div>
+              <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/historical-transcript-analysis</div>
+            </div>
+          </div>
+
+          <div style="font-size:0.85rem; color:var(--navy-800);">&darr;</div>
+
+          <!-- Agent 2 with Excel input -->
           <div style="position:relative;">
             <div style="position:absolute; right:calc(100% + 0.6rem); top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:0.4rem;">
-              <div style="border:1px solid var(--slate-300); border-radius:8px; padding:0.3rem 0.6rem; text-align:center; background:#fff; font-size:0.68rem; white-space:nowrap;">
+              <div style="border:1px solid var(--slate-300); border-radius:8px; padding:0.25rem 0.5rem; text-align:center; background:#fff; font-size:0.65rem; white-space:nowrap;">
                 <div style="font-size:0.5rem; text-transform:uppercase; color:var(--muted);">Human Input</div>
                 <div style="font-weight:700; color:var(--navy-900);">Excel/GSheet<br>Custom Prompts</div>
               </div>
               <span style="color:var(--navy-800); font-size:0.85rem;">&rarr;</span>
             </div>
-            <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px; background:#fff;">
+            <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.35rem 1rem; text-align:center; min-width:260px; background:#fff;">
               <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 2</div>
               <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/prompt-analysis</div>
             </div>
           </div>
 
-          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+          <div style="font-size:0.85rem; color:var(--navy-800);">&darr;</div>
 
-          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px; background:#fff;">
+          <!-- Agent 3 -->
+          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.35rem 1rem; text-align:center; min-width:260px; background:#fff;">
             <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 3</div>
             <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/ai-digester</div>
           </div>
 
-          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+          <div style="font-size:0.85rem; color:var(--navy-800);">&darr;</div>
 
-          <div style="background:rgba(28,53,94,0.08); border:2px solid var(--navy-800); border-radius:10px; padding:0.4rem 1rem; text-align:center; min-width:240px;">
+          <!-- Agent 4 -->
+          <div style="background:rgba(28,53,94,0.08); border:2px solid var(--navy-800); border-radius:10px; padding:0.35rem 1rem; text-align:center; min-width:260px;">
             <div style="font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 4</div>
             <div style="font-weight:700; font-size:0.82rem; color:var(--navy-900);">/communicator</div>
           </div>
 
-          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+          <div style="font-size:0.85rem; color:var(--navy-800);">&darr;</div>
 
           <!-- Channels -->
           <div style="display:flex; gap:0.3rem;">
-            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">Slack</div>
-            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">Email</div>
-            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">Teams</div>
+            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.2rem 0.5rem; font-size:0.7rem; font-weight:600; color:var(--navy-900); background:#fff;">Slack</div>
+            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.2rem 0.5rem; font-size:0.7rem; font-weight:600; color:var(--navy-900); background:#fff;">Email</div>
+            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.2rem 0.5rem; font-size:0.7rem; font-weight:600; color:var(--navy-900); background:#fff;">Teams</div>
           </div>
 
-          <div style="font-size:0.9rem; color:var(--navy-800);">&darr;</div>
+          <div style="font-size:0.85rem; color:var(--navy-800);">&darr;</div>
 
           <!-- Audience levels -->
           <div style="display:flex; gap:0.25rem;">
-            <div style="background:var(--navy-900); color:#fff; border-radius:5px; padding:0.2rem 0.55rem; font-size:0.68rem; font-weight:600;">Analyst</div>
-            <div style="background:var(--navy-800); color:#fff; border-radius:5px; padding:0.2rem 0.55rem; font-size:0.68rem; font-weight:600;">Associate</div>
-            <div style="background:var(--navy-700); color:#fff; border-radius:5px; padding:0.2rem 0.55rem; font-size:0.68rem; font-weight:600;">VP</div>
-            <div style="background:var(--navy-600); color:#fff; border-radius:5px; padding:0.2rem 0.55rem; font-size:0.68rem; font-weight:600;">Partner</div>
+            <div style="background:var(--navy-900); color:#fff; border-radius:5px; padding:0.2rem 0.5rem; font-size:0.65rem; font-weight:600;">Analyst</div>
+            <div style="background:var(--navy-800); color:#fff; border-radius:5px; padding:0.2rem 0.5rem; font-size:0.65rem; font-weight:600;">Associate</div>
+            <div style="background:var(--navy-700); color:#fff; border-radius:5px; padding:0.2rem 0.5rem; font-size:0.65rem; font-weight:600;">VP</div>
+            <div style="background:var(--navy-600); color:#fff; border-radius:5px; padding:0.2rem 0.5rem; font-size:0.65rem; font-weight:600;">Partner</div>
           </div>
 
         </div>
