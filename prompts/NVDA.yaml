@@ -1,0 +1,9 @@
+company: NVIDIA
+ticker: NVDA
+prompts:
+  - "Value chain changes in the last quarter — shifts in suppliers, customers, or competitive positioning"
+  - "Current and end market growth trajectory — datacenter, gaming, automotive, professional visualization"
+  - "Management tone on capital allocation — M&A stance, capex plans, buyback signals"
+  - "Guidance credibility vs prior quarters — did they deliver on what they promised last time?"
+  - "Key risks and their change in emphasis — what risks are growing vs shrinking?"
+  - "AI/datacenter demand signals and customer concentration — hyperscaler dependency"

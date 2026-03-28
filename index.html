@@ -56,6 +56,7 @@
   }
   .slide.bg-dark h1, .slide.bg-dark h2, .slide.bg-dark h3 { color: #fff; }
   .slide.bg-dark p, .slide.bg-dark li { color: rgba(255,255,255,0.85); }
+  .slide.bg-dark strong { color: #fff; }
   .slide.bg-dark .tag-gold { background: rgba(201,168,76,0.15); color: var(--gold-400); }
 
   .slide::before {
@@ -136,6 +137,7 @@
   .agent-card p { font-size: 0.9rem; line-height: 1.55; }
   .slide.bg-dark .agent-card { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); }
   .slide.bg-dark .agent-card h3 { color: #fff; }
+  .slide.bg-dark .agent-card p { color: rgba(255,255,255,0.8); }
   .slide.bg-dark .agent-card::before { background: linear-gradient(to right, rgba(255,255,255,0.3), rgba(255,255,255,0.1)); }
 
   .resp-table { max-width: 920px; width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 1.25rem; border-radius: var(--radius); overflow: hidden; font-size: 0.88rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
@@ -249,7 +251,22 @@
     </div>
   </div>
 
-  <!-- ====== 3. THREE-LAYER STACK ====== -->
+  <!-- ====== 3. OUR APPROACH ====== -->
+  <div class="slide bg-dark">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Our Approach</span>
+    <h2 style="color:#fff;">Hands-On Examples &amp; the Art of the Possible</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">We believe adoption is a co-creation with your team. There is no one-size-fits-all. It is a company effort.</h3>
+    <div style="text-align:left; max-width:720px; margin-top:1.5rem;">
+      <ul>
+        <li>Today we walk through <strong>live, hands-on examples</strong> built with real data</li>
+        <li>The goal is to show <strong>what is possible</strong> -not to prescribe a single solution</li>
+        <li>Every workflow we demonstrate can be <strong>tailored to GBL's specific process</strong></li>
+        <li>The best AI tools emerge from <strong>your team's expertise</strong>, not from a vendor's playbook</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====== 4. THREE-LAYER STACK ====== -->
   <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Core Concept</span>
     <h2 style="color:#fff;">The Three-Layer Stack</h2>
@@ -320,7 +337,7 @@
         <div class="agent-label">Demo 1 &middot; 28 min</div>
         <h3>Transcript Analyser</h3>
         <p>SGS Group (GBL's largest listed holding, 14.3% stake). Fetch earnings call transcripts, run a qualitative screen against GBL criteria, detect anomalies across quarters.</p>
-        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--muted);">Connect Claude Code to API via Wispr Flow. GSheet as database.</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--muted);">Connect Claude Code to API via Wispr Flow: 3x faster than typing, auto-removes filler words ("um", "uh"), custom vocabulary for financial terms. GSheet as database.</p>
       </div>
       <div class="agent-card">
         <div class="agent-label">Demo 2 &middot; 25 min</div>
@@ -337,71 +354,360 @@
     </div>
   </div>
 
-  <!-- ====== 6. DEMO 1: TRANSCRIPT ANALYSER ====== -->
+  <!-- ====== 6. DEMO 1: TRANSCRIPT ANALYSER -OVERVIEW ====== -->
   <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Hands On</span>
-    <h2 style="color:#fff;">Historical Transcript Analysis Agent</h2>
-    <h3 style="color:rgba(255,255,255,0.65);">SGS Group. Connect Claude Code to the API via Wispr Flow. Build the agent live.</h3>
-    <div class="flow" style="margin-bottom:1.5rem;">
-      <div class="flow-box primary">
-        <div class="flow-label-light">Fetcher</div>
-        <div class="flow-title">Get Transcript</div>
-        <p style="font-size:0.78rem; margin-top:0.25rem;">requests + BeautifulSoup</p>
+    <h2 style="color:#fff;">Reported Transcript Analysis: 5 Agents</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">Use Wispr Flow to dictate instructions to Claude Code. Connect to the transcript API. Build each agent live.</h3>
+    <div class="agent-grid" style="grid-template-columns: repeat(5, 1fr); margin-bottom:1.25rem;">
+      <div class="agent-card">
+        <div class="agent-label">Skill</div>
+        <h3>/transcript-downloader</h3>
+        <p>Fetches transcripts from API via Wispr Flow dictation. Reusable by multiple agents. GSheet = DB.</p>
       </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box">
-        <div class="flow-label">Analyser</div>
-        <div class="flow-title">Qualitative Screen</div>
-        <p style="font-size:0.78rem; margin-top:0.25rem;">Claude API + GBL prompts</p>
+      <div class="agent-card">
+        <div class="agent-label">Agent 1</div>
+        <h3>/simple-transcript-analysis</h3>
+        <p>One agent, one transcript, hardcoded qualitative screen. The "Hello World."</p>
       </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box">
-        <div class="flow-label">Loop</div>
-        <div class="flow-title">Multi-Quarter</div>
-        <p style="font-size:0.78rem; margin-top:0.25rem;">Q1-Q3 2024</p>
+      <div class="agent-card">
+        <div class="agent-label">Agent 2</div>
+        <h3>/shared-gdoc-prompt-analysis</h3>
+        <p>Management defines prompts per company in GDrive. Agent reads them on every run.</p>
       </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box">
-        <div class="flow-label">Detect</div>
-        <div class="flow-title">Anomalies</div>
-        <p style="font-size:0.78rem; margin-top:0.25rem;">Cross-quarter shifts</p>
+      <div class="agent-card">
+        <div class="agent-label">Agent 3</div>
+        <h3>/ai-digester</h3>
+        <p>Same output, tailored per level: analyst (full), VP (summary), partner (verdict).</p>
       </div>
-      <span class="flow-arrow">&rarr;</span>
-      <div class="flow-box gold">
-        <div class="flow-label">Output</div>
-        <div class="flow-title" style="color:#fff;">Briefing</div>
-        <p style="font-size:0.78rem; margin-top:0.25rem;">JSON + GSheet</p>
+      <div class="agent-card" style="border-color: var(--gold-400);">
+        <div class="agent-label">Agent 4</div>
+        <h3>/communicator</h3>
+        <p>Sends to Slack/email at each person's cadence. Daily for analysts, weekly for partners.</p>
       </div>
     </div>
-    <div style="text-align:left; max-width:700px;">
+    <div style="text-align:left; max-width:760px;">
       <ul>
-        <li>Management confidence score 1-10</li>
-        <li>Capital allocation signals (M&amp;A stance, capex, buybacks)</li>
-        <li>Notable language shifts vs. prior quarters</li>
-        <li>Guidance credibility: HIGH / MEDIUM / LOW</li>
-        <li>Top 3 risks mentioned</li>
-        <li>GBL thesis alignment score</li>
+        <li><strong>Wispr Flow:</strong> voice-to-code interface. Dictate what you want, Claude Code builds it</li>
+        <li><strong>Skill vs. Agent:</strong> /transcript-downloader is a skill because multiple agents reuse it in parallel</li>
+        <li><strong>Package &amp; schedule:</strong> once built, the full pipeline runs automatically every earnings season</li>
       </ul>
     </div>
   </div>
 
-  <!-- ====== 7. DEMO 1: EXTENDING WITH SHARED PROMPTS ====== -->
-  <div class="slide">
-    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Extending</span>
-    <h2>Management Defines the Prompts</h2>
-    <h3>Qualitative screen criteria live in a shared GDrive document. Anyone on the team adds prompts of interest. The agent reads them on every run.</h3>
-    <div class="code-block">
-      <span class="comment"># Shared GDrive Doc: GBL Qualitative Screen Prompts</span><br><br>
-      <span class="keyword">prompt_1:</span> <span class="string">"Value chain changes in the last quarter"</span><br>
-      <span class="keyword">prompt_2:</span> <span class="string">"Current and end market growth trajectory"</span><br>
-      <span class="keyword">prompt_3:</span> <span class="string">"Management tone on capital allocation"</span><br>
-      <span class="keyword">prompt_4:</span> <span class="string">"Guidance credibility vs prior quarters"</span><br>
-      <span class="keyword">prompt_5:</span> <span class="string">"Key risks and their change in emphasis"</span><br><br>
-      <span class="comment"># Anyone on the team can add new prompts here.</span><br>
-      <span class="comment"># The agent picks them up on the next scheduled run.</span>
+  <!-- ====== 7. DEMO 1: ARCHITECTURE DIAGRAM ====== -->
+  <div class="slide bg-alt">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Architecture</span>
+    <h2>End-to-End Pipeline</h2>
+
+    <div style="max-width:900px; width:100%; margin-top:1rem;">
+
+      <!-- TOOLS SECTION -distinct area at top -->
+      <div style="display:flex; align-items:center; justify-content:center; gap:1rem; margin-bottom:0.75rem; padding:0.8rem 1.5rem; background:var(--navy-900); border-radius:12px;">
+        <div style="text-align:center; color:#fff;">
+          <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:rgba(255,255,255,0.45); margin-bottom:0.1rem;">Voice Interface</div>
+          <div style="font-weight:700; font-size:0.95rem;">Wispr Flow</div>
+          <div style="font-size:0.65rem; color:rgba(255,255,255,0.5);">3x faster &middot; removes filler &middot; custom vocab</div>
+        </div>
+        <span style="font-size:1.3rem; color:rgba(255,255,255,0.4);">&rarr;</span>
+        <div style="text-align:center; color:#fff;">
+          <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:rgba(255,255,255,0.45); margin-bottom:0.1rem;">Orchestrator</div>
+          <div style="font-weight:700; font-size:0.95rem;">Claude Code</div>
+          <div style="font-size:0.65rem; color:rgba(255,255,255,0.5);">Builds &amp; runs all agents below</div>
+        </div>
+        <span style="font-size:1.3rem; color:rgba(255,255,255,0.4);">&rarr;</span>
+        <div style="text-align:center; color:#fff;">
+          <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:rgba(255,255,255,0.45); margin-bottom:0.1rem;">Data API</div>
+          <div style="font-weight:700; font-size:0.95rem;">FMP API</div>
+          <div style="font-size:0.65rem; color:rgba(255,255,255,0.5);">Earnings transcripts</div>
+        </div>
+        <span style="font-size:1.3rem; color:rgba(255,255,255,0.4);">&rarr;</span>
+        <div style="text-align:center; color:#fff;">
+          <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:rgba(255,255,255,0.45); margin-bottom:0.1rem;">Storage</div>
+          <div style="font-weight:700; font-size:0.95rem;">Google Drive</div>
+          <div style="font-size:0.65rem; color:rgba(255,255,255,0.5);">GSheet + shared docs</div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div style="text-align:center; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin:0.4rem 0;">Agents &amp; Skills</div>
+
+      <!-- AGENTS IN CENTER COLUMN -->
+      <div style="display:flex; flex-direction:column; align-items:center; gap:0.35rem;">
+
+        <!-- Skill: transcript-downloader -->
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <div style="border:2px dashed var(--slate-400); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px; background:rgba(28,53,94,0.06);">
+            <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Reusable Skill</div>
+            <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/transcript-downloader</div>
+          </div>
+        </div>
+
+        <div style="font-size:1rem; color:var(--navy-800);">&darr;</div>
+
+        <!-- Agent 1 -->
+        <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px; background:#fff;">
+          <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 1</div>
+          <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/simple-transcript-analysis</div>
+        </div>
+
+        <div style="font-size:1rem; color:var(--navy-800);">&darr;</div>
+
+        <!-- Agent 2 with GDrive input -->
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <div style="border:1px solid var(--slate-300); border-radius:8px; padding:0.35rem 0.7rem; text-align:center; background:#fff; font-size:0.75rem;">
+            <div style="font-size:0.55rem; text-transform:uppercase; color:var(--muted);">Human Input</div>
+            <div style="font-weight:700; color:var(--navy-900);">GDrive Prompts</div>
+          </div>
+          <span style="color:var(--navy-800);">&rarr;</span>
+          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px; background:#fff;">
+            <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 2</div>
+            <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/prompt-analysis</div>
+          </div>
+        </div>
+
+        <div style="font-size:1rem; color:var(--navy-800);">&darr;</div>
+
+        <!-- Agent 3 with fan-out -->
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <div style="border:1px solid var(--slate-300); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px; background:#fff;">
+            <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 3</div>
+            <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/ai-digester</div>
+          </div>
+          <span style="color:var(--navy-800);">&rarr;</span>
+          <div style="display:flex; flex-direction:column; gap:0.2rem;">
+            <div style="background:var(--navy-900); color:#fff; border-radius:5px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600;">Analyst</div>
+            <div style="background:var(--navy-800); color:#fff; border-radius:5px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600;">Associate</div>
+            <div style="background:var(--navy-700); color:#fff; border-radius:5px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600;">VP</div>
+            <div style="background:var(--navy-600); color:#fff; border-radius:5px; padding:0.2rem 0.6rem; font-size:0.68rem; font-weight:600;">Partner</div>
+          </div>
+        </div>
+
+        <div style="font-size:1rem; color:var(--navy-800);">&darr;</div>
+
+        <!-- Agent 4 with delivery channels -->
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <div style="background:rgba(28,53,94,0.08); border:2px solid var(--navy-800); border-radius:10px; padding:0.45rem 1rem; text-align:center; min-width:260px;">
+            <div style="font-size:0.6rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted);">Agent 4</div>
+            <div style="font-weight:700; font-size:0.85rem; color:var(--navy-900);">/communicator</div>
+          </div>
+          <span style="color:var(--navy-800);">&rarr;</span>
+          <div style="display:flex; gap:0.3rem;">
+            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">Slack</div>
+            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">Email</div>
+            <div style="border:1px solid var(--slate-300); border-radius:5px; padding:0.25rem 0.5rem; font-size:0.72rem; font-weight:600; color:var(--navy-900); background:#fff;">GDrive</div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <p style="margin-top:1.25rem; max-width:700px; font-size:1rem;">
-      New transcript drops? The qualitative screen runs automatically. This is the curation layer. The LLM is commodity. These prompts, shaped by decades of GBL judgment, are the proprietary edge.
+  </div>
+
+  <!-- ====== 8. /TRANSCRIPT-DOWNLOADER ====== -->
+  <div class="slide bg-dark">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Skill</span>
+    <h2 style="color:#fff;">/transcript-downloader</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">The plumbing. Wispr Flow dictation &rarr; Claude Code &rarr; FMP API &rarr; saved transcript. Boring but essential.</h3>
+    <div class="flow" style="margin-bottom:1.25rem;">
+      <div class="flow-box primary">
+        <div class="flow-label-light">Voice</div>
+        <div class="flow-title">Wispr Flow</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">"Download NVDA Q1 2024"</p>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">
+        <div class="flow-label">Orchestrator</div>
+        <div class="flow-title">Claude Code</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">Builds the API call</p>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">
+        <div class="flow-label">API</div>
+        <div class="flow-title">FMP Stable</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">earning-call-transcript</p>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box gold">
+        <div class="flow-label">Output</div>
+        <div class="flow-title" style="color:#fff;">Transcript File</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">9,004 words saved</p>
+      </div>
+    </div>
+    <p style="max-width:780px; font-size:0.88rem; margin-bottom:0.5rem; text-align:left;">The skill calls the Financial Modeling Prep API with the ticker and quarter, then saves the raw transcript locally:</p>
+    <div class="code-block" style="max-width:780px; font-size:0.78rem;">
+      <span class="comment"># API call -fetches the full earnings call transcript as JSON:</span><br>
+      <span class="keyword">curl</span> <span class="string">"https://financialmodelingprep.com/stable/earning-call-transcript<br>&nbsp;&nbsp;&nbsp;&nbsp;?symbol=NVDA&amp;quarter=1&amp;year=2024&amp;apikey=..."</span><br><br>
+      <span class="comment"># Returns 9,004 words of raw transcript. First lines:</span><br>
+      Operator: Good afternoon. My name is David, and I'll be your<br>
+      conference operator today. At this time, I'd like to welcome<br>
+      everyone to NVIDIA's First Quarter Earnings Call...
+    </div>
+    <p style="margin-top:1rem; max-width:700px; font-size:0.95rem;">
+      This is a <strong>skill</strong>, not an agent. Multiple agents reuse it in parallel. The transcript-downloader feeds every downstream analysis.
+    </p>
+  </div>
+
+  <!-- ====== 9. /SIMPLE-TRANSCRIPT-ANALYSIS ====== -->
+  <div class="slide">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Agent 1</span>
+    <h2>/simple-transcript-analysis</h2>
+    <h3>The "Hello World" of investment agents. One transcript, one hardcoded screen, structured JSON output. Already saves 3-4 hours per transcript.</h3>
+    <p style="max-width:780px; font-size:0.88rem; margin-bottom:0.5rem; text-align:left;">We give the agent a hardcoded prompt asking it to score the transcript across six dimensions:</p>
+    <div class="code-block" style="max-width:780px; font-size:0.78rem;">
+      <span class="comment"># Prompt (hardcoded in the skill):</span><br>
+      <span class="string">"Analyze this earnings transcript. Score management confidence<br>&nbsp;&nbsp;(1-10), rate guidance credibility (HIGH/MEDIUM/LOW), identify<br>&nbsp;&nbsp;top 3 risks with severity and trend, extract capital allocation<br>&nbsp;&nbsp;signals, and score thesis alignment (1-10). Output as JSON."</span><br><br>
+      <span class="comment"># Output from NVDA Q1 2024:</span><br><br>
+      <span class="keyword">"management_confidence_score":</span> <span class="string">9</span><br>
+      <span class="keyword">"management_confidence_rationale":</span> <span class="string">"Jensen spoke with<br>&nbsp;&nbsp;extraordinary conviction, calling it the 'iPhone moment'."</span><br>
+      <span class="keyword">"guidance_credibility":</span> <span class="string">"HIGH"</span><br>
+      <span class="keyword">"thesis_alignment_score":</span> <span class="string">9</span><br>
+      <span class="keyword">"top_3_risks":</span> [<br>
+      &nbsp;&nbsp;{ <span class="string">"Supply chain execution"</span>, <span class="keyword">severity:</span> <span class="string">"HIGH"</span>, <span class="keyword">trend:</span> <span class="string">"INCREASING"</span> },<br>
+      &nbsp;&nbsp;{ <span class="string">"China NEV softness"</span>, <span class="keyword">severity:</span> <span class="string">"MEDIUM"</span>, <span class="keyword">trend:</span> <span class="string">"STABLE"</span> },<br>
+      &nbsp;&nbsp;{ <span class="string">"Competition from every direction"</span>, <span class="keyword">severity:</span> <span class="string">"MEDIUM"</span>, <span class="keyword">trend:</span> <span class="string">"INCREASING"</span> }<br>
+      ]
+    </div>
+    <p style="margin-top:1rem; max-width:700px; font-size:0.95rem;">
+      Works. But the prompts are hardcoded. What if management wants different questions for different companies? <strong>We'll build that in our next agent.</strong>
+    </p>
+  </div>
+
+  <!-- ====== 10. /HISTORICAL-TRANSCRIPT-ANALYSIS ====== -->
+  <div class="slide bg-dark">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Scaling Up</span>
+    <h2 style="color:#fff;">/historical-transcript-analysis</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">One agent analyzed one quarter. Now run 12 agents in parallel across 3 years of earnings calls.</h3>
+    <div class="flow" style="margin-bottom:1.25rem;">
+      <div class="flow-box primary">
+        <div class="flow-label-light">Input</div>
+        <div class="flow-title">NVDA</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">Q1 '22 - Q4 '24</p>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">
+        <div class="flow-label">Download</div>
+        <div class="flow-title">12 Transcripts</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">In parallel</p>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">
+        <div class="flow-label">Analyze</div>
+        <div class="flow-title">12 Agents</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">All in parallel</p>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box gold">
+        <div class="flow-label">Output</div>
+        <div class="flow-title" style="color:#fff;">HTML Matrix</div>
+        <p style="font-size:0.78rem; margin-top:0.25rem;">Interactive scorecard</p>
+      </div>
+    </div>
+    <p style="max-width:760px; font-size:0.88rem; margin-bottom:0.5rem; text-align:left;">Each agent reuses the same /simple-transcript-analysis skill from Agent 1. 12 quarters scored simultaneously -management confidence, guidance credibility, thesis alignment, and risk severity across every earnings call:</p>
+    <div style="max-width:760px; text-align:left;">
+      <ul>
+        <li><strong>Color-coded matrix:</strong> red (weak) to green (strong) -spot trends at a glance</li>
+        <li><strong>Hover any cell</strong> for the rationale behind each score</li>
+        <li><strong>Notable quotes</strong> surfaced per quarter -the moments that matter</li>
+        <li><strong>12 agents, one command</strong> -what would take an analyst a full week runs in under 2 minutes</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====== 11. MATRIX EMBED ====== -->
+  <div class="slide" style="padding:1rem;">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: 12 Quarter Matrix</span>
+    <h2 style="font-size:1.6rem; margin-bottom:0.5rem;">NVDA Historical Scorecard</h2>
+    <iframe src="analyses/NVDA_historical_matrix.html" style="width:100%; height:75vh; border:1px solid var(--slate-200); border-radius:12px; background:#0F172A;" frameborder="0"></iframe>
+  </div>
+
+  <!-- ====== 12. /SHARED-GDOC-PROMPT-ANALYSIS + /AI-DIGESTER ====== -->
+  <div class="slide bg-alt">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Agents 2 &amp; 3</span>
+    <h2>Curation Layer + AI Digester</h2>
+    <h3>Management defines the prompts. The digester tailors output per level. Same data, four noise levels.</h3>
+    <div class="two-col" style="gap:2rem; align-items:start;">
+      <div>
+        <h3 style="margin-bottom:0.5rem;">/shared-gdoc-prompt-analysis</h3>
+        <p style="font-size:0.8rem; margin-bottom:0.4rem;">Management writes plain-English questions in a shared YAML file. The agent reads these on every run:</p>
+        <div class="code-block" style="font-size:0.75rem; margin-top:0;">
+          <span class="comment"># prompts/NVDA.yaml -editable by anyone</span><br><br>
+          <span class="keyword">prompt_1:</span> <span class="string">"Value chain changes"</span><br>
+          <span class="keyword">prompt_2:</span> <span class="string">"End market growth trajectory"</span><br>
+          <span class="keyword">prompt_3:</span> <span class="string">"Capital allocation tone"</span><br>
+          <span class="keyword">prompt_4:</span> <span class="string">"Guidance credibility"</span><br>
+          <span class="keyword">prompt_5:</span> <span class="string">"Key risks &amp; emphasis shifts"</span><br>
+          <span class="keyword">prompt_6:</span> <span class="string">"AI demand &amp; concentration"</span><br><br>
+          <span class="comment"># Anyone on the team adds prompts.</span><br>
+          <span class="comment"># No code changes needed.</span>
+        </div>
+        <p style="font-size:0.85rem; margin-top:0.75rem;">6 prompts &rarr; 6 findings with signal + confidence + key quotes. Executive summary table.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:0.5rem;">/ai-digester</h3>
+        <div style="display:flex; flex-direction:column; gap:0.4rem; margin-top:0.5rem;">
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <div style="background:var(--navy-900); color:#fff; border-radius:6px; padding:0.4rem 0.8rem; font-size:0.8rem; font-weight:600; min-width:90px;">Analyst</div>
+            <div style="background:var(--navy-900); height:8px; border-radius:4px; flex:1; opacity:0.9;"></div>
+            <span style="font-size:0.75rem; color:var(--muted); min-width:70px;">932 words</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <div style="background:var(--navy-800); color:#fff; border-radius:6px; padding:0.4rem 0.8rem; font-size:0.8rem; font-weight:600; min-width:90px;">Associate</div>
+            <div style="background:var(--navy-800); height:8px; border-radius:4px; width:68%; opacity:0.9;"></div>
+            <span style="font-size:0.75rem; color:var(--muted); min-width:70px;">639 words</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <div style="background:var(--navy-700); color:#fff; border-radius:6px; padding:0.4rem 0.8rem; font-size:0.8rem; font-weight:600; min-width:90px;">VP</div>
+            <div style="background:var(--navy-700); height:8px; border-radius:4px; width:26%; opacity:0.9;"></div>
+            <span style="font-size:0.75rem; color:var(--muted); min-width:70px;">247 words</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <div style="background:var(--navy-600); color:#fff; border-radius:6px; padding:0.4rem 0.8rem; font-size:0.8rem; font-weight:600; min-width:90px;">Partner</div>
+            <div style="background:var(--navy-600); height:8px; border-radius:4px; width:10%; opacity:0.9;"></div>
+            <span style="font-size:0.75rem; color:var(--muted); min-width:70px;">98 words</span>
+          </div>
+        </div>
+        <div style="margin-top:0.75rem; padding:0.75rem; background:#fff; border:1px solid var(--slate-200); border-radius:8px; font-size:0.8rem; line-height:1.5;">
+          <strong>Partner digest (actual output):</strong> "NVIDIA guided Q2 to $11B (up 53% sequentially). Demand broad-based across hyperscalers, enterprises, and startups. Supply procured through H2. <em>Recommend increasing conviction.</em>"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== 11. /COMMUNICATOR + PIPELINE ====== -->
+  <div class="slide bg-dark">
+    <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: Agent 4 &amp; Packaging</span>
+    <h2 style="color:#fff;">/communicator + Scheduled Pipeline</h2>
+    <h3 style="color:rgba(255,255,255,0.65);">The last mile. Route each digest to the right person, at the right cadence, on the right channel.</h3>
+    <table class="resp-table" style="margin-bottom:1.25rem;">
+      <tr><th>Level</th><th>Channel</th><th>Frequency</th><th>Priority</th></tr>
+      <tr><td>Analyst</td><td>Slack #earnings-analysis</td><td>Real-time (on transcript drop)</td><td><span class="badge badge-auto">Normal</span></td></tr>
+      <tr><td>Associate</td><td>Slack #investment-team</td><td>Daily digest</td><td><span class="badge badge-auto">Normal</span></td></tr>
+      <tr><td>VP</td><td>Email + Slack DM</td><td>Weekly summary</td><td><span class="badge badge-assist">High</span></td></tr>
+      <tr><td>Partner</td><td>Email + Slack DM</td><td>Weekly summary</td><td><span class="badge badge-human">Critical</span></td></tr>
+    </table>
+    <div class="flow" style="margin-bottom:1rem;">
+      <div class="flow-box">
+        <div class="flow-label">Transcript drops</div>
+        <div class="flow-title">/transcript-<br>downloader</div>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">
+        <div class="flow-label">Analyse</div>
+        <div class="flow-title">/gdoc-prompt<br>-analysis</div>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box">
+        <div class="flow-label">Digest</div>
+        <div class="flow-title">/ai-digester</div>
+      </div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-box gold">
+        <div class="flow-label">Deliver</div>
+        <div class="flow-title" style="color:#fff;">/communicator</div>
+      </div>
+    </div>
+    <p style="max-width:700px; font-size:1rem;">
+      Package as a scheduled skill. Runs every earnings season automatically. From one-shot demo to enterprise workflow. <strong>You are sitting on a goldmine of enterprise data.</strong>
     </p>
   </div>
 
@@ -637,94 +943,20 @@
     </div>
   </div>
 
-  <!-- ====== 16. MCP ====== -->
+  <!-- ====== CLOSING ====== -->
   <div class="slide bg-dark">
-    <span class="tag tag-gold"><span class="tag-dot"></span> Technical Foundation</span>
-    <h2 style="color:#fff;">MCP: Connecting Agents to Live Data</h2>
-    <h3 style="color:rgba(255,255,255,0.65);">MCP means Claude can ask Bloomberg in plain English: "Pull SGS's EBITDA margin for the last 8 quarters vs consensus."</h3>
-    <table class="compare-table" style="font-size:0.9rem;">
-      <tr><th>MCP Server</th><th>Data Available</th><th>GBL Feasibility</th></tr>
-      <tr><td><strong>Bloomberg</strong> (blpapi-mcp)</td><td>Price data, financials, estimates, news, transcripts</td><td>Requires Bloomberg license</td></tr>
-      <tr><td><strong>FactSet MCP</strong> (official)</td><td>Fundamentals, estimates, ownership, M&amp;A data</td><td>Can demo with sandbox</td></tr>
-      <tr><td><strong>LSEG / Refinitiv</strong></td><td>Real-time prices, filing data, transcripts</td><td>API key demo possible</td></tr>
-      <tr><td><strong>SEC EDGAR MCP</strong></td><td>13F filings, insider trades, regulatory filings</td><td>Free, live demo today</td></tr>
-      <tr class="highlight-row"><td><strong>Custom GBL MCP</strong></td><td>Internal databases, portfolio KPIs, IC memo store</td><td>Build in Day 1</td></tr>
-    </table>
-  </div>
-
-  <!-- ====== 17. ROADMAP ====== -->
-  <div class="slide">
     <span class="tag tag-gold"><span class="tag-dot"></span> Next Steps</span>
-    <h2>Implementation Roadmap</h2>
-    <div class="roadmap">
-      <div class="roadmap-item">
-        <div class="roadmap-time">Weeks 1-4</div>
-        <div class="roadmap-line"></div>
-        <div class="roadmap-content">
-          <h4>Quick Win: Transcript Analysis</h4>
-          <p>Deploy /simple-transcript-analysis for listed portfolio earnings. GSheet as database. 60-80% analyst time savings.</p>
-        </div>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-time">Weeks 4-8</div>
-        <div class="roadmap-line"></div>
-        <div class="roadmap-content">
-          <h4>Internal Agent + RAG</h4>
-          <p>Build RAG over internal IC memos + CIMs. Deploy custom GBL MCP. Analysts can query full deal history.</p>
-        </div>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-time">Weeks 8-16</div>
-        <div class="roadmap-line"></div>
-        <div class="roadmap-content">
-          <h4>CIM Screener + Digester</h4>
-          <p>Multi-agent CIM screening. /ai-digester per partner. /communicator on schedule. Integrate FactSet/Bloomberg MCP.</p>
-        </div>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-time">Weeks 12-20</div>
-        <div class="roadmap-line"></div>
-        <div class="roadmap-content">
-          <h4>Portfolio Watchdog + Alt Data</h4>
-          <p>Watchdog for all listed holdings. Slack alerts. SignalScribe. Podcast monitoring. Daily digest to partners.</p>
-        </div>
-      </div>
-      <div class="roadmap-item">
-        <div class="roadmap-time">Months 6-12</div>
-        <div class="roadmap-line"></div>
-        <div class="roadmap-content">
-          <h4>Full Stack</h4>
-          <p>Connect all agents. Build GBL AI portal. Analyst training. &euro;200-400K/year total cost baseline.</p>
-        </div>
-      </div>
+    <h2 style="color:#fff;">What Should GBL Start With?</h2>
+    <div style="text-align:left; max-width:760px; margin-top:1.5rem;">
+      <ul style="font-size:1.05rem; line-height:2.2;">
+        <li><strong>Roll out Claude Code to the team</strong> -get it in people's hands</li>
+        <li><strong>Define approvals needed</strong> -come back a few weeks later</li>
+        <li><strong>Tool discovery, brainstorming, and implementation period</strong> -let the team explore what works for their specific workflows</li>
+        <li><strong>Collect tools and bring to management</strong> -show how the team is actually using it, what stuck, what didn't</li>
+        <li><strong>Work one-on-one or team-by-team</strong> -set up skills, workflows, and agents tailored to each group's needs</li>
+      </ul>
     </div>
-  </div>
-
-  <!-- ====== 18. CLOSING ====== -->
-  <div class="slide bg-dark">
-    <span class="tag tag-gold"><span class="tag-dot"></span> Discussion</span>
-    <h2 style="color:#fff;">What Should GBL Build First?</h2>
-    <div class="two-col" style="max-width:800px; margin-top:1rem;">
-      <div class="col-card">
-        <h3>Questions to Explore</h3>
-        <ul>
-          <li>Which of these three agents adds the most immediate value?</li>
-          <li>Do you currently have CapIQ or Bloomberg API access?</li>
-          <li>What does the current IC memo process look like?</li>
-          <li>How does the team currently track portfolio company news?</li>
-        </ul>
-      </div>
-      <div class="col-card">
-        <h3>Immediate Next Steps</h3>
-        <ul>
-          <li>Share demo files + gbl_criteria.py with the team</li>
-          <li>Curated discovery period with 1-2 analysts</li>
-          <li>Define approval gates, come back in a few weeks</li>
-          <li>Schedule a 2-day internal build workshop</li>
-        </ul>
-      </div>
-    </div>
-    <p style="margin-top:1.5rem; color:rgba(255,255,255,0.4); font-size:0.9rem;">
+    <p style="margin-top:2rem; color:rgba(255,255,255,0.4); font-size:0.9rem;">
       Cameron Weibel &amp; Spencer Johnson &middot; Hebbian GmbH &middot; cameron@hebbian.ch
     </p>
   </div>

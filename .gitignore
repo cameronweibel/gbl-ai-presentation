@@ -1,0 +1,7 @@
+.env
+transcripts/
+analyses/
+!analyses/NVDA_historical_matrix.html
+digests/
+deliveries/
+.DS_Store

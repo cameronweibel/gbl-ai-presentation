@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NVDA Historical Transcript Analysis — 12 Quarter Matrix</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Questrial', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0F172A; color: #E2E8F0; padding: 2rem; }
+  h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.25rem; color: #fff; }
+  .subtitle { font-size: 0.95rem; color: #94A3B8; margin-bottom: 1.5rem; }
+  .matrix-container { overflow-x: auto; margin-bottom: 2rem; }
+  table { border-collapse: separate; border-spacing: 3px; width: 100%; min-width: 900px; }
+  th { background: #1E293B; color: #94A3B8; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.6rem 0.5rem; border-radius: 6px; font-weight: 600; text-align: center; }
+  th.row-label { text-align: left; min-width: 180px; color: #CBD5E1; font-size: 0.78rem; text-transform: none; letter-spacing: normal; }
+  td { text-align: center; padding: 0.55rem 0.4rem; border-radius: 6px; font-weight: 700; font-size: 1rem; cursor: pointer; position: relative; transition: transform 0.15s, box-shadow 0.15s; user-select: none; }
+  td:hover { transform: scale(1.08); box-shadow: 0 4px 16px rgba(0,0,0,0.4); z-index: 10; }
+  .score-1, .score-2, .score-3 { background: #DC2626; color: #fff; }
+  .score-4, .score-5 { background: #D97706; color: #fff; }
+  .score-6 { background: #65A30D; color: #fff; }
+  .score-7 { background: #16A34A; color: #fff; }
+  .score-8 { background: #15803D; color: #fff; }
+  .score-9, .score-10 { background: #166534; color: #fff; }
+  .legend { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; color: #94A3B8; }
+  .legend-swatch { width: 16px; height: 16px; border-radius: 4px; }
+  .section-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin: 1.5rem 0 0.75rem; }
+  .quotes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.75rem; }
+  .quote-card { background: #1E293B; border: 1px solid #334155; border-radius: 8px; padding: 0.8rem 1rem; }
+  .quote-card .quarter { font-size: 0.7rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+  .quote-card blockquote { font-size: 0.82rem; line-height: 1.5; color: #CBD5E1; font-style: italic; }
+  .quote-card .speaker { font-size: 0.75rem; color: #64748B; margin-top: 0.3rem; }
+  .meta { font-size: 0.75rem; color: #475569; margin-top: 1.5rem; text-align: center; }
+
+  /* Modal */
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: #1E293B; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; max-width: 480px; width: 90%; box-shadow: 0 16px 48px rgba(0,0,0,0.5); position: relative; }
+  .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+  .modal-title { font-size: 1rem; font-weight: 700; color: #fff; }
+  .modal-score { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; font-weight: 700; font-size: 1.1rem; color: #fff; }
+  .modal-close { background: none; border: none; color: #64748B; font-size: 1.4rem; cursor: pointer; padding: 0.25rem; line-height: 1; }
+  .modal-close:hover { color: #fff; }
+  .modal-metric { font-size: 0.75rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; }
+  .modal-body { font-size: 0.88rem; line-height: 1.6; color: #CBD5E1; }
+</style>
+</head>
+<body>
+
+<h1>NVDA — 12 Quarter Scorecard</h1>
+<p class="subtitle">Historical transcript analysis across Q1 2022 — Q4 2024. 12 agents ran in parallel. Click any cell for rationale.</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-swatch" style="background:#DC2626;"></div> 1-3 (Weak)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#D97706;"></div> 4-5 (Mixed)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#65A30D;"></div> 6 (Moderate)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#16A34A;"></div> 7 (Good)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#15803D;"></div> 8 (Strong)</div>
+  <div class="legend-item"><div class="legend-swatch" style="background:#166534;"></div> 9-10 (Exceptional)</div>
+</div>
+
+<div class="matrix-container">
+<table>
+<tr>
+  <th class="row-label"></th>
+  <th>Q1 '22</th><th>Q2 '22</th><th>Q3 '22</th><th>Q4 '22</th>
+  <th>Q1 '23</th><th>Q2 '23</th><th>Q3 '23</th><th>Q4 '23</th>
+  <th>Q1 '24</th><th>Q2 '24</th><th>Q3 '24</th><th>Q4 '24</th>
+</tr>
+
+<!-- Management Confidence -->
+<tr>
+  <th class="row-label">Management Confidence</th>
+  <td class="score-7" onclick="openModal('Management Confidence','Q1 2022',7,'Strong confidence in data center growth and Omniverse platform. Jensen bullish on accelerated computing but acknowledged macro headwinds in gaming.')">7</td>
+  <td class="score-5" onclick="openModal('Management Confidence','Q2 2022',5,'Cautious tone. Gaming channel inventory buildup acknowledged. Revenue miss on crypto mining decline. Data center remained bright spot.')">5</td>
+  <td class="score-4" onclick="openModal('Management Confidence','Q3 2022',4,'Gaming revenue down 51% YoY. Management defensive on inventory correction timeline. Data center growth slowed. Tone notably measured.')">4</td>
+  <td class="score-5" onclick="openModal('Management Confidence','Q4 2022',5,'Signs of stabilization. Gaming inventory correction progressing. China export controls created uncertainty. Data center record despite headwinds.')">5</td>
+  <td class="score-6" onclick="openModal('Management Confidence','Q1 2023',6,'Recovery signals emerging. Gaming channel clearing. Pro viz bottoming. Data center strong on AI inference demand. Cautiously optimistic tone.')">6</td>
+  <td class="score-7" onclick="openModal('Management Confidence','Q2 2023',7,'Turning point visible. H100 ramp gaining momentum. Enterprise AI adoption accelerating. Jensen more animated on generative AI opportunity.')">7</td>
+  <td class="score-8" onclick="openModal('Management Confidence','Q3 2023',8,'Strong conviction. Record data center. Gaming recovery confirmed. AI demand described as incredible. Supply constraints the main concern, not demand.')">8</td>
+  <td class="score-8" onclick="openModal('Management Confidence','Q4 2023',8,'Continued high conviction. Data center revenue doubled YoY. Jensen framed AI as industrial revolution. Broad-based demand across CSPs and enterprise.')">8</td>
+  <td class="score-9" onclick="openModal('Management Confidence','Q1 2024',9,'Extraordinary conviction. Called it the iPhone moment for AI. $11B Q2 guide — 53% sequential. Language superlative throughout. Supply procured for H2.')">9</td>
+  <td class="score-9" onclick="openModal('Management Confidence','Q2 2024',9,'Sustained peak confidence. Data center $10.3B. Sovereign AI as new demand driver. Jensen spoke of next industrial revolution. No signs of demand softening.')">9</td>
+  <td class="score-9" onclick="openModal('Management Confidence','Q3 2024',9,'Record revenue $18.1B. Data center $14.5B. Blackwell in full production. Jensen maximally bullish. Demand exceeds supply across all segments.')">9</td>
+  <td class="score-9" onclick="openModal('Management Confidence','Q4 2024',9,'Revenue $22.1B, beating estimates. Blackwell ramping. Jensen described tipping point for AI factories. Confidence remained at ceiling level.')">9</td>
+</tr>
+
+<!-- Guidance Credibility (now 1-10) -->
+<tr>
+  <th class="row-label">Guidance Credibility</th>
+  <td class="score-8" onclick="openModal('Guidance Credibility','Q1 2022',8,'Delivered on prior guidance. Data center growth materialized as predicted. Product roadmap execution on track.')">8</td>
+  <td class="score-5" onclick="openModal('Guidance Credibility','Q2 2022',5,'Guided down on gaming. Acknowledged missing the crypto exposure risk. Data center met expectations but total revenue fell short.')">5</td>
+  <td class="score-3" onclick="openModal('Guidance Credibility','Q3 2022',3,'Prior quarter guidance proved too optimistic. Gaming decline deeper than communicated. Inventory correction timeline extended beyond initial estimates.')">3</td>
+  <td class="score-5" onclick="openModal('Guidance Credibility','Q4 2022',5,'Recovery timeline estimates still uncertain. China restrictions added unpredictable variable. Data center guidance delivered but gaming timeline unclear.')">5</td>
+  <td class="score-5" onclick="openModal('Guidance Credibility','Q1 2023',5,'Improving but not yet proven. Gaming recovery starting but pace uncertain. New product ramp timelines reasonable but unproven.')">5</td>
+  <td class="score-8" onclick="openModal('Guidance Credibility','Q2 2023',8,'Q1 results validated the AI narrative. H100 demand materialized. Gaming recovery on track. Beginning to rebuild credibility after FY23 misses.')">8</td>
+  <td class="score-9" onclick="openModal('Guidance Credibility','Q3 2023',9,'Delivered on ambitious guidance. Data center exceeded expectations. Supply chain execution strong. Forward guidance specific and backed by committed supply.')">9</td>
+  <td class="score-9" onclick="openModal('Guidance Credibility','Q4 2023',9,'Continued delivery. Revenue beat consensus by wide margin. Guidance consistently met or exceeded. Multi-quarter visibility credibly communicated.')">9</td>
+  <td class="score-9" onclick="openModal('Guidance Credibility','Q1 2024',9,'$11B guide was 53% sequential — extraordinary but backed by procured supply and multi-quarter visibility. Colette confirmed H2 substantially larger than H1.')">9</td>
+  <td class="score-10" onclick="openModal('Guidance Credibility','Q2 2024',10,'Delivered $13.5B vs $11B guide. Credibility at peak. Forward estimates increasingly conservative relative to delivery. Track record now exceptional.')">10</td>
+  <td class="score-10" onclick="openModal('Guidance Credibility','Q3 2024',10,'Beat-and-raise cycle continued. $18.1B vs guided range. Management systematically under-promising. Guidance credibility firmly established.')">10</td>
+  <td class="score-10" onclick="openModal('Guidance Credibility','Q4 2024',10,'$22.1B revenue. Consistent beat pattern. Blackwell ramp guidance detailed and specific. Market now trusts NVIDIA guidance implicitly.')">10</td>
+</tr>
+
+<!-- Thesis Alignment -->
+<tr>
+  <th class="row-label">Thesis Alignment</th>
+  <td class="score-7" onclick="openModal('Thesis Alignment','Q1 2022',7,'Growth thesis intact despite gaming weakness. Data center moat deepening via CUDA ecosystem. Pricing power evident in A100 demand.')">7</td>
+  <td class="score-5" onclick="openModal('Thesis Alignment','Q2 2022',5,'Gaming crash challenged the consumer cyclical exposure. Quality thesis strained. Data center moat still strong but total company growth negative.')">5</td>
+  <td class="score-4" onclick="openModal('Thesis Alignment','Q3 2022',4,'Worst quarter for thesis. Revenue down 17% YoY. Market questioned whether NVIDIA was a cyclical hardware company, not a platform company.')">4</td>
+  <td class="score-5" onclick="openModal('Thesis Alignment','Q4 2022',5,'Thesis under repair. China risks introduced structural concern. Data center record provided anchor. Platform narrative needed validation.')">5</td>
+  <td class="score-6" onclick="openModal('Thesis Alignment','Q1 2023',6,'Recovery supporting thesis rebuild. AI tailwind emerging as potential secular driver. Full-stack platform narrative gaining evidence.')">6</td>
+  <td class="score-7" onclick="openModal('Thesis Alignment','Q2 2023',7,'AI demand validating platform thesis. CUDA moat proving out. Pricing power strong on H100. Secular growth narrative replacing cyclical hardware narrative.')">7</td>
+  <td class="score-8" onclick="openModal('Thesis Alignment','Q3 2023',8,'Thesis strengthening rapidly. $1T data center TAM framing. Software monetization via AI Enterprise. Competitive moat expanding across full stack.')">8</td>
+  <td class="score-8" onclick="openModal('Thesis Alignment','Q4 2023',8,'Near-perfect thesis execution. Dominant position + structural growth + expanding TAM. DGX Cloud adding recurring revenue. Only risk is concentration.')">8</td>
+  <td class="score-9" onclick="openModal('Thesis Alignment','Q1 2024',9,'Peak alignment. Dominant market + secular AI tailwind + expanding into platform revenue + pricing power. Only deduction: hyperscaler concentration risk.')">9</td>
+  <td class="score-9" onclick="openModal('Thesis Alignment','Q2 2024',9,'Thesis fully validated. Sovereign AI expanding TAM beyond hyperscalers. Software revenue growing. Networking business adding diversification.')">9</td>
+  <td class="score-10" onclick="openModal('Thesis Alignment','Q3 2024',10,'Maximum alignment. Blackwell architecture extending lead. AI factories as new paradigm. Revenue diversification improving. Moat widening across all vectors.')">10</td>
+  <td class="score-10" onclick="openModal('Thesis Alignment','Q4 2024',10,'Strongest thesis alignment ever. Market leadership unquestioned. Multi-year visibility. Platform flywheel (hardware + software + cloud) fully operational.')">10</td>
+</tr>
+
+<!-- Top Risk Severity -->
+<tr>
+  <th class="row-label">Top Risk Severity</th>
+  <td class="score-5" onclick="openModal('Top Risk Severity','Q1 2022',5,'Gaming inventory buildup starting. Crypto demand declining. Macro uncertainty rising. Manageable but worth watching.')">5</td>
+  <td class="score-3" onclick="openModal('Top Risk Severity','Q2 2022',3,'Gaming channel crisis. Crypto collapse impacting revenue. Supply chain still pandemic-disrupted. Multiple simultaneous headwinds.')">3</td>
+  <td class="score-2" onclick="openModal('Top Risk Severity','Q3 2022',2,'Severe: gaming -51% YoY, inventory correction deepening, China export restrictions announced. Multiple high-severity risks converging.')">2</td>
+  <td class="score-3" onclick="openModal('Top Risk Severity','Q4 2022',3,'China export controls creating material uncertainty. Gaming still in correction. Geopolitical risk elevated. Revenue impact quantifiable but ongoing.')">3</td>
+  <td class="score-4" onclick="openModal('Top Risk Severity','Q1 2023',4,'China restrictions ongoing but contained. Gaming recovering. New risk: AI competition from startups and CSP custom chips emerging.')">4</td>
+  <td class="score-5" onclick="openModal('Top Risk Severity','Q2 2023',5,'Competition from every direction acknowledged. Supply constraints could limit upside. China revenue capped. Moderate overall risk level.')">5</td>
+  <td class="score-5" onclick="openModal('Top Risk Severity','Q3 2023',5,'Supply execution at unprecedented scale is top risk. Competition intensifying. China restrictions tightened further. Automotive NEV softness.')">5</td>
+  <td class="score-5" onclick="openModal('Top Risk Severity','Q4 2023',5,'Supply chain must deliver at historically unprecedented volumes. Hyperscaler capex concentration risk. Geopolitical risks stable but persistent.')">5</td>
+  <td class="score-5" onclick="openModal('Top Risk Severity','Q1 2024',5,'Supply chain execution top risk — 35K components per system board at unprecedented ramp. Competition from all directions. China NEV softness lingering.')">5</td>
+  <td class="score-5" onclick="openModal('Top Risk Severity','Q2 2024',5,'Sustainability of AI capex spending questioned by market. Supply constraints ongoing. Competition from custom ASICs increasing.')">5</td>
+  <td class="score-6" onclick="openModal('Top Risk Severity','Q3 2024',6,'Moderating. Supply improving. Competition manageable. Main risk is whether AI spending sustains — but evidence increasingly supports structural demand.')">6</td>
+  <td class="score-6" onclick="openModal('Top Risk Severity','Q4 2024',6,'Risks moderating further. Blackwell production on track. Demand visibility strong. Remaining risks: geopolitics, capex cycle sustainability, export controls.')">6</td>
+</tr>
+
+</table>
+</div>
+
+<div class="section-title">Notable Quotes by Quarter</div>
+<div class="quotes">
+  <div class="quote-card">
+    <div class="quarter">Q3 2022</div>
+    <blockquote>"We are navigating very different dynamics across our end markets."</blockquote>
+    <div class="speaker">— Jensen Huang, on managing gaming downturn</div>
+  </div>
+  <div class="quote-card">
+    <div class="quarter">Q1 2024</div>
+    <blockquote>"The world's $1 trillion data center is nearly populated entirely by CPUs today... the budget will shift dramatically."</blockquote>
+    <div class="speaker">— Jensen Huang, on total addressable market</div>
+  </div>
+  <div class="quote-card">
+    <div class="quarter">Q2 2024</div>
+    <blockquote>"Sovereign AI is a new and very large opportunity... nations are investing in their own AI infrastructure."</blockquote>
+    <div class="speaker">— Jensen Huang, on TAM expansion</div>
+  </div>
+  <div class="quote-card">
+    <div class="quarter">Q3 2024</div>
+    <blockquote>"Blackwell is in full production. The demand for Blackwell is staggering."</blockquote>
+    <div class="speaker">— Jensen Huang, on next-gen architecture</div>
+  </div>
+  <div class="quote-card">
+    <div class="quarter">Q4 2024</div>
+    <blockquote>"We are at a tipping point of a new computing era. AI factories are the new data centers."</blockquote>
+    <div class="speaker">— Jensen Huang, on industry paradigm shift</div>
+  </div>
+  <div class="quote-card">
+    <div class="quarter">Q1 2024</div>
+    <blockquote>"We have procured substantially higher supply for the second half... significant supply chain flow to serve demand."</blockquote>
+    <div class="speaker">— Colette Kress, on supply visibility</div>
+  </div>
+</div>
+
+<p class="meta">Generated by /demo-1bb-historical-analysis — 12 agents ran in parallel — Click any cell for rationale</p>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div>
+        <div class="modal-metric" id="modalMetric"></div>
+        <div class="modal-title" id="modalTitle"></div>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <div class="modal-score" id="modalScore"></div>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+function openModal(metric, quarter, score, rationale) {
+  document.getElementById('modalMetric').textContent = metric;
+  document.getElementById('modalTitle').textContent = quarter;
+  const scoreEl = document.getElementById('modalScore');
+  scoreEl.textContent = score;
+  scoreEl.className = 'modal-score score-' + score;
+  document.getElementById('modalBody').textContent = rationale;
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function closeModal(e) {
+  if (!e || e.target === document.getElementById('modalOverlay')) {
+    document.getElementById('modalOverlay').classList.remove('active');
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+
+</body>
+</html>
