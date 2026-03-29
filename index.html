@@ -404,14 +404,14 @@
 
       <!-- Wispr Flow -->
       <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:1rem; text-align:center;">
-        <img src="logos/wispr.svg" alt="Wispr Flow" style="width:48px; height:48px; margin-bottom:0.5rem;">
+        <img src="logos/wispr.svg" alt="Wispr Flow" style="width:80px; height:48px; object-fit:contain; margin-bottom:0.5rem;">
         <h3 style="font-size:0.95rem; margin-bottom:0.25rem;">Wispr Flow</h3>
         <p style="font-size:0.78rem; color:var(--muted); line-height:1.4;">Voice-to-text interface. ~3x faster than typing. Removes filler words, custom vocabulary.</p>
       </div>
 
       <!-- FMP API -->
       <div style="background:#fff; border:1px solid var(--slate-200); border-radius:12px; padding:1rem; text-align:center;">
-        <img src="logos/fmp.svg" alt="FMP" style="width:48px; height:48px; margin-bottom:0.5rem;">
+        <img src="logos/fmp.png" alt="FMP" style="width:48px; height:48px; object-fit:contain; margin-bottom:0.5rem;">
         <h3 style="font-size:0.95rem; margin-bottom:0.25rem;">FMP API</h3>
         <p style="font-size:0.78rem; color:var(--muted); line-height:1.4;">Financial Modeling Prep. Earnings transcripts, financials, estimates. Direct API access.</p>
       </div>
@@ -746,11 +746,103 @@
     </div>
   </div>
 
-  <!-- ====== 11. MATRIX EMBED ====== -->
-  <div class="slide" style="padding:1rem;">
+  <!-- ====== 11. MATRIX EMBED (Interactive Workflow) ====== -->
+  <div class="slide bg-dark" style="padding:1.5rem; overflow:hidden;" id="workflowSlide">
     <span class="tag tag-gold"><span class="tag-dot"></span> Demo 1: 12 Quarter Matrix</span>
-    <h2 style="font-size:1.6rem; margin-bottom:0.5rem;">NVDA Historical Scorecard</h2>
-    <iframe src="analyses/NVDA_historical_matrix.html" style="width:100%; height:75vh; border:1px solid var(--slate-200); border-radius:12px; background:#0F172A;" frameborder="0"></iframe>
+    <h2 style="font-size:1.6rem; margin-bottom:0.5rem; color:#fff;">NVDA Historical Scorecard</h2>
+
+    <div id="wfWrap" style="position:relative; width:100%; max-width:1100px; height:72vh;">
+
+      <!-- Run button (initial state) -->
+      <div id="wfStart" style="display:flex; align-items:center; justify-content:center; width:100%; height:100%;">
+        <button id="wfRunBtn" style="
+          padding:1rem 2.5rem; font-size:1.2rem; font-weight:700; font-family:inherit;
+          background:linear-gradient(135deg, #3B82F6, #2563EB); color:#fff;
+          border:none; border-radius:12px; cursor:pointer; position:relative; z-index:10;
+          box-shadow:0 0 30px rgba(59,130,246,0.4); transition:transform 0.2s, box-shadow 0.2s;
+        ">&#9654; Run Workflow</button>
+      </div>
+
+      <!-- SVG canvas for connection lines -->
+      <svg id="wfLines" xmlns="http://www.w3.org/2000/svg" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; display:none; overflow:visible;">
+        <defs>
+          <marker id="wfArrow" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto">
+            <path d="M0,0 L6,2 L0,4" fill="rgba(255,255,255,0.25)"/>
+          </marker>
+          <marker id="wfArrowGreen" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto">
+            <path d="M0,0 L6,2 L0,4" fill="rgba(34,197,94,0.5)"/>
+          </marker>
+          <marker id="wfArrowPurple" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto">
+            <path d="M0,0 L6,2 L0,4" fill="rgba(139,92,246,0.5)"/>
+          </marker>
+        </defs>
+      </svg>
+
+      <!-- Animation canvas -->
+      <div id="wfCanvas" style="display:none; position:absolute; inset:0; width:100%; height:100%;">
+
+        <!-- Row 1: Claude centered, FMP to its left with transfer bar -->
+        <div id="wfTopRow" style="position:absolute; top:0.5%; right:52%; display:flex; align-items:center; gap:1rem; opacity:0; transition:opacity 0.6s;">
+          <div id="wfFmp" class="wf-node" style="display:flex; flex-direction:column; align-items:center; gap:0.2rem;">
+            <div style="width:40px; height:40px; border-radius:10px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.15); display:flex; align-items:center; justify-content:center; overflow:hidden;">
+              <img src="logos/fmp.png" alt="FMP" style="width:28px; height:28px; object-fit:contain;">
+            </div>
+            <span style="font-size:0.55rem; color:rgba(255,255,255,0.5);">FMP API</span>
+          </div>
+          <div id="wfDataArrow" style="display:flex; flex-direction:column; align-items:center; gap:0.2rem; opacity:0; transition:opacity 0.4s; min-width:120px;">
+            <span id="wfTransferLabel" style="font-size:0.55rem; color:rgba(255,255,255,0.4);">transcripts &#8594;</span>
+            <div style="width:100%; height:3px; background:rgba(255,255,255,0.08); border-radius:2px; overflow:hidden;">
+              <div id="wfTransferBar" style="width:0%; height:100%; background:#3B82F6; border-radius:2px; transition:width 0.15s;"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Claude node pinned to center -->
+        <div id="wfClaude" class="wf-node" style="position:absolute; top:0; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:0.2rem; opacity:0; transition:opacity 0.6s;">
+          <div style="width:40px; height:40px; border-radius:10px; background:rgba(217,119,87,0.15); border:2px solid #D97757; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+            <img src="logos/claude.svg" alt="Claude" style="width:26px; height:26px;">
+          </div>
+          <span style="font-size:0.55rem; color:rgba(255,255,255,0.5);">Claude</span>
+        </div>
+
+        <!-- "spawns 12 agents" label -->
+        <div id="wfSpawnLabel" style="position:absolute; top:12%; left:50%; transform:translateX(-50%); opacity:0; transition:opacity 0.5s;">
+          <span style="font-size:0.6rem; color:rgba(255,255,255,0.35); letter-spacing:0.05em;">&#9660; spawns 12 agents in parallel</span>
+        </div>
+
+        <!-- Row 2: 12 agent grid (positioned by JS) -->
+        <div id="wfGrid" style="position:absolute; left:50%; transform:translateX(-50%); display:grid; grid-template-columns:repeat(4,1fr); gap:0.4rem; width:92%; max-width:920px;"></div>
+
+        <!-- "results funnel" label -->
+        <div id="wfFunnelLabel" style="position:absolute; left:50%; transform:translateX(-50%); opacity:0; transition:opacity 0.5s;">
+          <span style="font-size:0.6rem; color:rgba(255,255,255,0.35); letter-spacing:0.05em;">&#9660; results</span>
+        </div>
+
+        <!-- Row 3: Visualizer node (stays visible) -->
+        <div id="wfViz" style="position:absolute; bottom:7%; left:50%; transform:translateX(-50%); opacity:0; transition:all 0.6s; display:flex; flex-direction:column; align-items:center; gap:0.2rem;">
+          <div id="wfVizBox" style="background:rgba(139,92,246,0.15); border:2px solid #8B5CF6; border-radius:12px; padding:0.4rem 1.2rem; display:flex; align-items:center; gap:0.5rem; transition:all 0.6s;">
+            <div id="wfVizDot" style="width:10px; height:10px; border-radius:50%; background:#8B5CF6; transition:background 0.4s;"></div>
+            <span id="wfVizLabel" style="font-size:0.8rem; font-weight:700; color:#fff; transition:all 0.3s;">Visualizer</span>
+          </div>
+          <span id="wfVizStatus" style="font-size:0.6rem; color:rgba(255,255,255,0.4); transition:all 0.4s;">Waiting for data&hellip;</span>
+        </div>
+
+        <!-- Row 4: View Output button (appears after Visualizer completes) -->
+        <button id="wfShowBtn" style="
+          position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+          padding:0.5rem 1.8rem; font-size:0.95rem; font-weight:700; font-family:inherit;
+          background:linear-gradient(135deg, #8B5CF6, #7C3AED); color:#fff;
+          border:none; border-radius:12px; cursor:pointer; z-index:10;
+          box-shadow:0 0 25px rgba(139,92,246,0.4);
+          opacity:0; pointer-events:none; transition:opacity 0.5s;
+        ">&#10003; View Output</button>
+      </div>
+
+      <!-- Iframe (final state) -->
+      <iframe id="wfIframe" src="analyses/NVDA_historical_matrix.html" style="
+        display:none; position:absolute; inset:0; width:100%; height:100%; border:1px solid rgba(255,255,255,0.15);
+        border-radius:12px; background:#0F172A;
+      " frameborder="0"></iframe>
+    </div>
   </div>
 
   <!-- ====== TRANSITION QUESTION ====== -->
@@ -1090,6 +1182,7 @@
   <div class="slide bg-dark">
     <span class="tag tag-gold"><span class="tag-dot"></span> Next Steps</span>
     <h2 style="color:#fff;">What Should GBL Start With?</h2>
+    <h3 style="color:rgba(255,255,255,0.55); margin-top:0.25rem;">Building momentum and moat</h3>
     <div style="display:flex; flex-direction:column; align-items:center; gap:0; margin-top:1.5rem; max-width:700px;">
 
       <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:10px; padding:0.7rem 1.5rem; width:100%; text-align:left;">
@@ -1164,6 +1257,8 @@ function show(n) {
     b.style.color = isDark ? '#fff' : '';
   });
   document.querySelector('.nav .counter').style.color = isDark ? 'rgba(255,255,255,0.4)' : '';
+  // Reset workflow when navigating away
+  if (current !== document.getElementById('workflowSlide') && wfRunning) { resetWorkflow(); }
 }
 
 function go(dir) { show(idx + dir); }
@@ -1182,7 +1277,327 @@ document.addEventListener('touchend', e => {
   if (Math.abs(diff) > 50) go(diff > 0 ? 1 : -1);
 });
 
+// declare workflow globals before show(0)
+window.wfRunning = false;
+window.resetWorkflow = function(){};
+
 show(0);
+
+/* ── Workflow Animation ── */
+(function(){
+  const QS = ['Q1 22','Q2 22','Q3 22','Q4 22','Q1 23','Q2 23','Q3 23','Q4 23','Q1 24','Q2 24','Q3 24','Q4 24'];
+  let wfTimers = [];
+
+  // inject styles once
+  const sty = document.createElement('style');
+  sty.textContent = `
+    @keyframes wfSpin { to { transform:rotate(360deg) } }
+    @keyframes wfPulse { 0%,100%{box-shadow:0 0 6px rgba(59,130,246,0.25)} 50%{box-shadow:0 0 16px rgba(59,130,246,0.55)} }
+    @keyframes wfDots { 0%{opacity:.2} 50%{opacity:1} 100%{opacity:.2} }
+    @keyframes wfFunnelDown { 0%{opacity:1;transform:translateY(0)} 100%{opacity:0;transform:translateY(60px)} }
+    @keyframes wfVizPulse { 0%,100%{box-shadow:0 0 8px rgba(139,92,246,0.3)} 50%{box-shadow:0 0 22px rgba(139,92,246,0.6)} }
+    .wf-spin { animation:wfSpin .7s linear infinite }
+    .wf-pulse { animation:wfPulse 1.4s ease-in-out infinite }
+    .wf-dot-stream { width:6px;height:6px;border-radius:50%;background:#3B82F6;animation:wfDots 1s ease-in-out infinite }
+    .wf-dot-stream:nth-child(3) { animation-delay:.33s }
+    .wf-agent { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;
+      padding:0.35rem 0.4rem;display:flex;flex-direction:column;align-items:center;gap:0.15rem;
+      opacity:0;transform:scale(.7);transition:all .35s cubic-bezier(.34,1.56,.64,1) }
+    .wf-agent.visible { opacity:1;transform:scale(1) }
+    .wf-agent.downloading { border-color:#F59E0B !important }
+    .wf-agent.analyzing { border-color:#3B82F6 !important; animation:wfPulse 1.4s ease-in-out infinite }
+    .wf-agent.done { border-color:#22C55E !important; background:rgba(34,197,94,0.08) !important; animation:none }
+    .wf-funnel-dot { position:absolute;width:5px;height:5px;border-radius:50%;background:#22C55E;
+      animation:wfFunnelDown .7s ease-in forwards;pointer-events:none }
+    .wf-viz-active { animation:wfVizPulse 1s ease-in-out infinite }
+  `;
+  document.head.appendChild(sty);
+
+  window.wfRunning = false;
+
+  // Helper: draw an SVG line with optional animation
+  function drawLine(svg, x1, y1, x2, y2, color, markerEnd, cls) {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x1); line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2); line.setAttribute('y2', y2);
+    line.setAttribute('stroke', color);
+    line.setAttribute('stroke-width', '1.5');
+    line.setAttribute('stroke-dasharray', '4,3');
+    if (markerEnd) line.setAttribute('marker-end', 'url(#' + markerEnd + ')');
+    if (cls) line.setAttribute('class', cls);
+    line.style.opacity = '0';
+    line.style.transition = 'opacity 0.5s';
+    svg.appendChild(line);
+    return line;
+  }
+
+  // Helper: get center of element relative to wfWrap
+  function centerOf(el) {
+    const wrap = document.getElementById('wfWrap').getBoundingClientRect();
+    const r = el.getBoundingClientRect();
+    return { x: r.left - wrap.left + r.width / 2, y: r.top - wrap.top + r.height / 2 };
+  }
+
+  document.getElementById('wfRunBtn').addEventListener('click', function() {
+    if (wfRunning) return;
+    wfRunning = true;
+    const startDiv = document.getElementById('wfStart');
+    startDiv.style.transition = 'opacity .4s';
+    startDiv.style.opacity = '0';
+    startDiv.style.pointerEvents = 'none';
+
+    const canvas = document.getElementById('wfCanvas');
+    const svg = document.getElementById('wfLines');
+    canvas.style.display = 'block';
+    svg.style.display = 'block';
+    // Clear any old lines
+    svg.querySelectorAll('line').forEach(l => l.remove());
+
+    const t = (fn, ms) => { const id = setTimeout(fn, ms); wfTimers.push(id); return id; };
+
+    // Phase 1: Show FMP row + Claude (centered separately)
+    t(() => {
+      document.getElementById('wfTopRow').style.opacity = '1';
+      document.getElementById('wfClaude').style.opacity = '1';
+    }, 300);
+    t(() => {
+      document.getElementById('wfDataArrow').style.opacity = '1';
+      const tBar = document.getElementById('wfTransferBar');
+      const tLabel = document.getElementById('wfTransferLabel');
+      const tStart = Date.now();
+      const tDur = 2000;
+      const tIv = setInterval(() => {
+        const pct = Math.min(100, ((Date.now() - tStart) / tDur) * 100);
+        tBar.style.width = pct + '%';
+        if (pct >= 100) {
+          clearInterval(tIv);
+          tBar.style.background = '#22C55E';
+          tLabel.textContent = 'transcripts received \u2713';
+          tLabel.style.color = '#22C55E';
+        }
+      }, 30);
+      wfTimers.push(tIv);
+    }, 1000);
+
+    // Phase 2: Build 12 agent nodes
+    const grid = document.getElementById('wfGrid');
+    grid.innerHTML = '';
+    QS.forEach((q, i) => {
+      const el = document.createElement('div');
+      el.className = 'wf-agent';
+      el.id = 'wfa-' + i;
+      el.innerHTML = `
+        <div style="font-size:.6rem;color:rgba(255,255,255,.35)">Agent ${i+1}</div>
+        <div style="font-size:.72rem;font-weight:700;color:#fff">${q}</div>
+        <div style="font-size:.5rem;color:rgba(255,255,255,.3);margin-top:.05rem;text-align:center;line-height:1.2" class="wf-adesc">Downloading &amp; analyzing transcripts</div>
+        <div style="display:flex;align-items:center;gap:.25rem;margin-top:.1rem">
+          <div class="wf-aspinner" style="width:10px;height:10px;border:2px solid rgba(255,255,255,.12);border-top-color:#F59E0B;border-radius:50%;"></div>
+          <span class="wf-alabel" style="font-size:.55rem;color:rgba(255,255,255,.45)">queued</span>
+        </div>
+        <div style="width:100%;height:3px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:.1rem;overflow:hidden">
+          <div class="wf-abar" style="width:0%;height:100%;border-radius:2px;transition:width .2s;background:#F59E0B"></div>
+        </div>
+      `;
+      grid.appendChild(el);
+    });
+
+    // Center grid vertically between Claude row and Visualizer
+    t(() => {
+      const wrap = document.getElementById('wfWrap');
+      const claudeEl = document.getElementById('wfClaude');
+      const vizEl = document.getElementById('wfViz');
+      const wrapH = wrap.offsetHeight;
+      const topBottom = claudeEl.offsetTop + claudeEl.offsetHeight;
+      const vizTopPx = wrapH * 0.93 - vizEl.offsetHeight;
+      const gridH = grid.offsetHeight;
+      const availableSpace = vizTopPx - topBottom;
+      const gridTop = topBottom + (availableSpace - gridH) / 2;
+      grid.style.top = gridTop + 'px';
+      document.getElementById('wfSpawnLabel').style.top = (gridTop - 18) + 'px';
+      const funnelLabel = document.getElementById('wfFunnelLabel');
+      funnelLabel.style.top = (gridTop + gridH + 4) + 'px';
+      funnelLabel.style.bottom = 'auto';
+    }, 50);
+
+    // Show spawn label
+    t(() => { document.getElementById('wfSpawnLabel').style.opacity = '1'; }, 2800);
+
+    // Stagger agent appearance + draw lines from Claude
+    QS.forEach((_, i) => {
+      t(() => {
+        const el = document.getElementById('wfa-' + i);
+        el.classList.add('visible');
+        el.querySelector('.wf-aspinner').classList.add('wf-spin');
+        t(() => {
+          const claudeEl = document.getElementById('wfClaude');
+          const cPos = centerOf(claudeEl);
+          const aPos = centerOf(el);
+          const line = drawLine(svg, cPos.x, cPos.y + 20, aPos.x, aPos.y - el.offsetHeight/2, 'rgba(217,119,87,0.3)', 'wfArrow', 'wf-line-down');
+          t(() => { line.style.opacity = '1'; }, 50);
+        }, 150);
+      }, 3200 + i * 150);
+    });
+
+    // Phase 3: /download then /analyze (slower durations)
+    QS.forEach((_, i) => {
+      const dlStart = 5200 + Math.random() * 800;
+      t(() => {
+        const el = document.getElementById('wfa-' + i);
+        el.classList.add('downloading');
+        const lbl = el.querySelector('.wf-alabel');
+        const bar = el.querySelector('.wf-abar');
+        const spinner = el.querySelector('.wf-aspinner');
+        lbl.textContent = '/download';
+        lbl.style.color = '#F59E0B';
+        spinner.style.borderTopColor = '#F59E0B';
+        bar.style.background = '#F59E0B';
+
+        const dur = 1500 + Math.random() * 1000;
+        const s = Date.now();
+        const iv = setInterval(() => {
+          const p = Math.min(50, ((Date.now() - s) / dur) * 50);
+          bar.style.width = p + '%';
+          if (p >= 50) {
+            clearInterval(iv);
+            el.classList.remove('downloading');
+            el.classList.add('analyzing');
+            lbl.textContent = '/analyze';
+            lbl.style.color = '#3B82F6';
+            bar.style.background = '#3B82F6';
+            spinner.style.borderTopColor = '#3B82F6';
+
+            const dur2 = 2000 + Math.random() * 2500;
+            const s2 = Date.now();
+            const iv2 = setInterval(() => {
+              const p2 = Math.min(100, 50 + ((Date.now() - s2) / dur2) * 50);
+              bar.style.width = p2 + '%';
+              if (p2 >= 100) {
+                clearInterval(iv2);
+                el.classList.remove('analyzing');
+                el.classList.add('done');
+                bar.style.background = '#22C55E';
+                spinner.style.animation = 'none';
+                spinner.style.border = 'none';
+                spinner.style.background = '#22C55E';
+                spinner.style.width = '8px';
+                spinner.style.height = '8px';
+                spinner.style.borderRadius = '50%';
+                lbl.textContent = 'done';
+                lbl.style.color = '#22C55E';
+                wfCheckDone();
+              }
+            }, 40);
+            wfTimers.push(iv2);
+          }
+        }, 30);
+        wfTimers.push(iv);
+      }, dlStart);
+    });
+  });
+
+  window.wfCheckDone = function() {
+    if (document.querySelectorAll('.wf-agent.done').length < 12) return;
+    const svg = document.getElementById('wfLines');
+
+    // Show funnel label
+    document.getElementById('wfFunnelLabel').style.opacity = '1';
+
+    // Show visualizer node
+    const viz = document.getElementById('wfViz');
+    viz.style.opacity = '1';
+    viz.querySelector('div').classList.add('wf-viz-active');
+    document.getElementById('wfVizStatus').textContent = 'Building matrix\u2026';
+
+    // Draw lines from each agent → Visualizer node
+    const vizEl = document.getElementById('wfViz');
+    setTimeout(() => {
+      const vPos = centerOf(vizEl);
+      QS.forEach((_, i) => {
+        setTimeout(() => {
+          const el = document.getElementById('wfa-' + i);
+          const aPos = centerOf(el);
+          const line = drawLine(svg, aPos.x, aPos.y + el.offsetHeight/2, vPos.x, vPos.y - vizEl.offsetHeight/2, 'rgba(34,197,94,0.3)', 'wfArrowGreen', 'wf-line-up');
+          setTimeout(() => { line.style.opacity = '1'; }, 50);
+        }, i * 80);
+      });
+    }, 300);
+
+    // Visualizer completes → draw line to button → show button
+    setTimeout(() => {
+      viz.querySelector('div').classList.remove('wf-viz-active');
+      document.getElementById('wfVizDot').style.background = '#22C55E';
+      document.getElementById('wfVizLabel').textContent = 'Visualizer \u2713';
+      document.getElementById('wfVizStatus').textContent = 'Complete';
+      document.getElementById('wfVizStatus').style.color = '#22C55E';
+
+      // Draw line from Visualizer to View Output button
+      const btn = document.getElementById('wfShowBtn');
+      const vPos = centerOf(vizEl);
+      const bPos = centerOf(btn);
+      const line = drawLine(svg, vPos.x, vPos.y + vizEl.offsetHeight/2, bPos.x, bPos.y - 16, 'rgba(139,92,246,0.4)', 'wfArrowPurple', 'wf-line-final');
+      setTimeout(() => { line.style.opacity = '1'; }, 100);
+
+      setTimeout(() => {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }, 400);
+    }, 2500);
+  };
+
+  // View Output click handler
+  document.getElementById('wfShowBtn').addEventListener('click', function() {
+    const canvas = document.getElementById('wfCanvas');
+    const lines = document.getElementById('wfLines');
+    canvas.style.transition = 'opacity .5s';
+    canvas.style.opacity = '0';
+    lines.style.transition = 'opacity .5s';
+    lines.style.opacity = '0';
+    setTimeout(() => {
+      canvas.style.display = 'none';
+      lines.style.display = 'none';
+      const iframe = document.getElementById('wfIframe');
+      iframe.style.display = 'block';
+      iframe.style.opacity = '0';
+      iframe.style.transition = 'opacity .6s';
+      requestAnimationFrame(() => { iframe.style.opacity = '1'; });
+    }, 500);
+  });
+
+  window.resetWorkflow = function() {
+    wfTimers.forEach(clearTimeout);
+    wfTimers = [];
+    wfRunning = false;
+    const startDiv = document.getElementById('wfStart');
+    startDiv.style.opacity = '1'; startDiv.style.pointerEvents = 'auto';
+    document.getElementById('wfCanvas').style.display = 'none';
+    document.getElementById('wfCanvas').style.opacity = '1';
+    const svgEl = document.getElementById('wfLines');
+    svgEl.style.display = 'none';
+    svgEl.style.opacity = '1';
+    svgEl.querySelectorAll('line').forEach(l => l.remove());
+    document.getElementById('wfIframe').style.display = 'none';
+    document.getElementById('wfTopRow').style.opacity = '0';
+    document.getElementById('wfClaude').style.opacity = '0';
+    document.getElementById('wfDataArrow').style.opacity = '0';
+    document.getElementById('wfTransferBar').style.width = '0%';
+    document.getElementById('wfTransferBar').style.background = '#3B82F6';
+    document.getElementById('wfTransferLabel').textContent = 'transcripts \u2192';
+    document.getElementById('wfTransferLabel').style.color = 'rgba(255,255,255,0.4)';
+    document.getElementById('wfSpawnLabel').style.opacity = '0';
+    document.getElementById('wfFunnelLabel').style.opacity = '0';
+    document.getElementById('wfViz').style.opacity = '0';
+    document.getElementById('wfVizStatus').textContent = 'Waiting for data\u2026';
+    document.getElementById('wfVizStatus').style.color = 'rgba(255,255,255,0.4)';
+    document.getElementById('wfVizStatus').style.opacity = '1';
+    document.getElementById('wfVizDot').style.background = '#8B5CF6';
+    document.getElementById('wfVizLabel').textContent = 'Visualizer';
+    document.getElementById('wfShowBtn').style.opacity = '0';
+    document.getElementById('wfShowBtn').style.pointerEvents = 'none';
+    document.getElementById('wfGrid').innerHTML = '';
+    const vizDiv = document.getElementById('wfViz');
+    if (vizDiv) vizDiv.querySelector('div').classList.remove('wf-viz-active');
+  };
+})();
 </script>
 </body>
 </html>
