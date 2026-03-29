@@ -1263,6 +1263,16 @@ function show(n) {
 
 function go(dir) { show(idx + dir); }
 
+// Sync slide number to URL query param
+function updateURL() {
+  const url = new URL(window.location);
+  url.searchParams.set('slide', idx + 1);
+  history.replaceState(null, '', url);
+}
+// Hook into show()
+const _origShow = show;
+show = function(n) { _origShow(n); updateURL(); };
+
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
   else if (e.key === 'ArrowLeft') go(-1);
@@ -1281,7 +1291,9 @@ document.addEventListener('touchend', e => {
 window.wfRunning = false;
 window.resetWorkflow = function(){};
 
-show(0);
+// Read ?slide= param or default to slide 1
+const startSlide = parseInt(new URLSearchParams(window.location.search).get('slide')) || 1;
+show(Math.max(0, Math.min(total - 1, startSlide - 1)));
 
 /* ── Workflow Animation ── */
 (function(){
